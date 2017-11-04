@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="log-in"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding style="background:url(assets/img/UQLxzY0VQHynJ00TWBpG_pexels-photo-255501.jpeg) no-repeat center;background-size:cover;" id="page5">
+  <form id="login-form1">
+    <div class="spacer" style="height:40px;" id="login-spacer2"></div>
+    <ion-list id="login-list2">
+      <ion-item id="login-input1">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-input type="email" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item id="login-input2">
+        <ion-label>
+          Password
+        </ion-label>
+        <ion-input type="password" placeholder=""></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+    <button id="login-button1" ion-button color="stable" block on-click="goToInicio()">
+      Iniciar Sesion
+    </button>
+    <button id="login-button2" ion-button clear color="positive" block on-click="goToOlvideContrasena()">
+      olvidaste tu contraseña?
+    </button>
+    <button id="login-button3" ion-button clear color="positive" block href-inappbrowser="/signup">
+      Pre-Registro
+    </button>
+  </form>
+</ion-content>

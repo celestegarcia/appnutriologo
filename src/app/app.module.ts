@@ -1,25 +1,83 @@
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { OlvideContrasenaPage } from '../pages/olvide-contrasena/olvide-contrasena';
+import { InicioPage } from '../pages/inicio/inicio';
+import { MensajesPage } from '../pages/mensajes/mensajes';
+import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
+import { LoginPage } from '../pages/login/login';
+import { RecordatorioDeCitasPage } from '../pages/recordatorio-de-citas/recordatorio-de-citas';
+import { CerrarSesionPage } from '../pages/cerrar-sesion/cerrar-sesion';
+import { MensajePage } from '../pages/mensaje/mensaje';
+import { InformacionDeNutriologoPage } from '../pages/informacion-de-nutriologo/informacion-de-nutriologo';
+import { SeguimientoPage } from '../pages/seguimiento/seguimiento';
+import { DespensaPage } from '../pages/despensa/despensa';
+import { EscogerMenuPage } from '../pages/escoger-menu/escoger-menu';
+import { CitasPage } from '../pages/citas/citas';
+import { ConfirmarCitaPage } from '../pages/confirmar-cita/confirmar-cita';
+import { ListaDespensaPage } from '../pages/lista-despensa/lista-despensa';
+import { ConfiguracionesPage } from '../pages/configuraciones/configuraciones';
+import { AcercaDePage } from '../pages/acerca-de/acerca-de';
+import { VerMenuDiaPage } from '../pages/ver-menu-dia/ver-menu-dia';
+import { MenuCompletoPage } from '../pages/menu-completo/menu-completo';
+import { PreRegistroPage } from '../pages/pre-registro/pre-registro';
+
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    OlvideContrasenaPage,
+    InicioPage,
+    MensajesPage,
+    TabsControllerPage,
+    LoginPage,
+    RecordatorioDeCitasPage,
+    CerrarSesionPage,
+    MensajePage,
+    InformacionDeNutriologoPage,
+    SeguimientoPage,
+    DespensaPage,
+    EscogerMenuPage,
+    CitasPage,
+    ConfirmarCitaPage,
+    ListaDespensaPage,
+    ConfiguracionesPage,
+    AcercaDePage,
+    VerMenuDiaPage,
+    MenuCompletoPage,
+    PreRegistroPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'top'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    OlvideContrasenaPage,
+    InicioPage,
+    MensajesPage,
+    TabsControllerPage,
+    LoginPage,
+    RecordatorioDeCitasPage,
+    CerrarSesionPage,
+    MensajePage,
+    InformacionDeNutriologoPage,
+    SeguimientoPage,
+    DespensaPage,
+    EscogerMenuPage,
+    CitasPage,
+    ConfirmarCitaPage,
+    ListaDespensaPage,
+    ConfiguracionesPage,
+    AcercaDePage,
+    VerMenuDiaPage,
+    MenuCompletoPage,
+    PreRegistroPage
   ],
   providers: [
     StatusBar,
