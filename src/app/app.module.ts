@@ -26,6 +26,7 @@ import { PreRegistroPage } from '../pages/pre-registro/pre-registro';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PreRegistroPage
   ],
   imports: [
+    NgCalendarModule,
     BrowserModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'top'})
   ],
