@@ -18,13 +18,13 @@
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+        <ion-input type="email" placeholder="" [(ngModel)]="user.email" name="email"></ion-input>
       </ion-item>
       <ion-item id="login-input2">
         <ion-label>
           Password
         </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
+        <ion-input type="password" placeholder="" [(ngModel)]="user.password" name="password"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="height:40px;" id="login-spacer1"></div>

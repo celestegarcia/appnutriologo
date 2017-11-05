@@ -11,11 +11,24 @@ import { PreRegistroPage } from '../pre-registro/pre-registro';
 })
 export class LoginPage {
 
+  public user:any = {
+    email:"",
+    password:""
+  }
+
   constructor(public navCtrl: NavController) {
   }
   goToInicio(params){
     if (!params) params = {};
-    this.navCtrl.push(TabsControllerPage) ;
+
+    //Guardar datos del compa
+    localStorage.setItem("usrEmail", this.user.email);
+    localStorage.setItem("usrPass", this.user.password);
+    this.navCtrl.push(TabsControllerPage,this.user);
+
+
+    
+
   }goToOlvideContrasena(params){
     if (!params) params = {};
     this.navCtrl.push(OlvideContrasenaPage);
