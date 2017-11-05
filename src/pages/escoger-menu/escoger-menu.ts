@@ -5,6 +5,7 @@ import { MenuCompletoPage } from '../menu-completo/menu-completo';
 import { DespensaPage } from '../despensa/despensa';
 import { ListaDespensaPage } from '../lista-despensa/lista-despensa';
 import { InicioPage } from '../inicio/inicio';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-escoger-menu',
@@ -12,7 +13,7 @@ import { InicioPage } from '../inicio/inicio';
 })
 export class EscogerMenuPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
   }
   goToVerMenuDia(params){
     if (!params) params = {};
@@ -32,5 +33,28 @@ export class EscogerMenuPage {
   }goToInicio(params){
     if (!params) params = {};
     this.navCtrl.push(InicioPage);
+  }
+
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Contenido del menu',
+      subTitle: 'Aqui van los ingredientes!',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          handler: () => {
+            console.log('Menu revisado');
+          }
+        },
+        {
+          text: 'Ver todo',
+          handler: () => {
+            console.log('Menu completo');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

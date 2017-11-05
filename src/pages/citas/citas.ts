@@ -14,7 +14,7 @@ export class CitasPage {
   selectedDay = new Date();
  
   calendar = {
-    mode: 'month',
+    mode: 'month ',
     currentDate: new Date()
   };
   constructor (public navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController) { }

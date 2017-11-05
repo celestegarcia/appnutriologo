@@ -15,12 +15,51 @@
           Elija el menu
         </ion-card-header>
       
-        <ion-card-content>
-          <!-- Add card content here! -->
-        </ion-card-content>
+      
+          <div class = "row">
+            <div class = "col col-10">Hora</div>
+            <div class = "col col-40">Menus</div>
+         </div>
+         <div radio-group class = "row">
+             <div class = "col ">7:00 am</div>
+               <div class = "col " (click)="showAlert()">Menu 1<ion-radio color="secondary"></ion-radio></div>
+               <div class = "col " (click)="showAlert()">Menu 2<ion-radio color="secondary"></ion-radio></div>
+               <div class = "col " (click)="showAlert()">Menu 3<ion-radio color="secondary"></ion-radio></div>
+         </div>
+         <div radio-group class = "row">
+            <div class = "col col-20">10:00 am</div>
+            <div class = "col " (click)="showAlert()">Menu 1<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 2<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 3<ion-radio color="secondary"></ion-radio></div>
+         </div>
+         <div radio-group class = "row">
+            <div class = "col col-20">1:00 pm</div>
+            <div class = "col " (click)="showAlert()">Menu 1<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 2<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 3<ion-radio color="secondary"></ion-radio></div>
+         </div>
+         <div radio-group class = "row">
+            <div class = "col col-20">4:00 pm</div>
+            <div class = "col " (click)="showAlert()">Menu 1<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 2<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 3<ion-radio color="secondary"></ion-radio></div>
+         </div>
+         <div radio-group class = "row">
+            <div class = "col col-20">7:00 am</div>
+            <div class = "col " (click)="showAlert()">Menu 1<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 2<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 3<ion-radio color="secondary"></ion-radio></div>
+         </div>
+         <div radio-group class = "row">
+            <div class = "col col-20">10:00 pm</div>
+            <div class = "col " (click)="showAlert()">Menu 1<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 2<ion-radio color="secondary"></ion-radio></div>
+            <div class = "col " (click)="showAlert()">Menu 3<ion-radio color="secondary"></ion-radio></div>
+         </div>
+       
       
      
-  <button id="escogerMenu-button13" ion-button color="positive" block on-click="goToDespensa()">
+  <button id="escogerMenu-button13" ion-button color="secondary" block on-click="goToDespensa()">
     Aceptar
   </button>
 </ion-card>
