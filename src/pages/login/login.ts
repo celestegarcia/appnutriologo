@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { InicioPage } from '../inicio/inicio';
 import { OlvideContrasenaPage } from '../olvide-contrasena/olvide-contrasena';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
-
+import { PreRegistroPage } from '../pre-registro/pre-registro';
 
 @Component({
   selector: 'page-login',
@@ -22,5 +22,9 @@ export class LoginPage {
   }goToLogin(params){
     if (!params) params = {};
     this.navCtrl.push(LoginPage);
+  }
+  goToPreReg(params){
+    if (!params) params = {};
+    this.navCtrl.push(PreRegistroPage);
   }
 }

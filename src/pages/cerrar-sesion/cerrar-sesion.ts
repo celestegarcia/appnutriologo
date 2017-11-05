@@ -14,7 +14,9 @@ export class CerrarSesionPage {
   }
   goToLogin(params){
     if (!params) params = {};
-    this.navCtrl.push(LoginPage);
+    //this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.popToRoot();
   }goToInicio(params){
     if (!params) params = {};
     this.navCtrl.push(InicioPage);
