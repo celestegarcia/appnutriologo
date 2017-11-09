@@ -6,6 +6,7 @@ import { DespensaPage } from '../despensa/despensa';
 import { ListaDespensaPage } from '../lista-despensa/lista-despensa';
 import { InicioPage } from '../inicio/inicio';
 import { AlertController } from 'ionic-angular';
+import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 
 @Component({
   selector: 'page-escoger-menu',
@@ -32,7 +33,8 @@ export class EscogerMenuPage {
     this.navCtrl.push(ListaDespensaPage);
   }goToInicio(params){
     if (!params) params = {};
-    this.navCtrl.push(InicioPage);
+    this.navCtrl.push(TabsControllerPage, {index:0});     
+
   }
 
   showAlert() {

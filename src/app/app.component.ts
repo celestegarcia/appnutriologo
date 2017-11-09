@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, NavController, Tabs } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -16,6 +16,7 @@ import { ConfirmarCitaPage } from '../pages/confirmar-cita/confirmar-cita';
 import { ConfiguracionesPage } from '../pages/configuraciones/configuraciones';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { SeguimientoPage } from '../pages/seguimiento/seguimiento';
+import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
 
 import { LoginPage } from '../pages/login/login';
@@ -39,7 +40,7 @@ export class MyApp {
   }
   goToInicio(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(InicioPage);
+    this.navCtrl.setRoot(TabsControllerPage, {index:0});
   }goToCerrarSesion(params){
     if (!params) params = {};
     this.navCtrl.setRoot(CerrarSesionPage);

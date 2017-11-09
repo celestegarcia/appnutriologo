@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams ,Tabs } from 'ionic-angular';
 import { InicioPage } from '../inicio/inicio';
 import { MensajesPage } from '../mensajes/mensajes';
 import { RecordatorioDeCitasPage } from '../recordatorio-de-citas/recordatorio-de-citas';
@@ -18,14 +18,21 @@ export class TabsControllerPage {
   tab1Root: any = InicioPage;
   tab2Root: any = MensajesPage;
   tab3Root: any = RecordatorioDeCitasPage;
+  @ViewChild('myTabs') tabRef: Tabs;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user=navParams.data;
+    //console.log(this.navParams.data.index);
+  }
+
+  ionViewDidEnter() {
+    this.tabRef.select(this.navParams.data.index);
   }
   goToInicio(params){
     params = {email:this.user.email, password:this.user.password};
-    if (!params) params = {};
+    //if (!params) params = {};
     //console.log(params.data);
-    this.navCtrl.push(InicioPage);
+   // this.navCtrl.push(InicioPage);
   }goToMensajes(params){
     if (!params) params = {};
     this.navCtrl.push(MensajesPage);

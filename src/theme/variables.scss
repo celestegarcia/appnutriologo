@@ -23,7 +23,10 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
+form {
+  background: mix(black, white, 50%);
+  background: rgba(black, 0.5);
+}
 
 // Named Color Variables
 // --------------------------------------------------

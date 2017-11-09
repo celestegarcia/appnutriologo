@@ -13,6 +13,7 @@ export class EventModalPage {
   minDate = new Date().toISOString();
  
   constructor(public navCtrl: NavController, private navParams: NavParams, public viewCtrl: ViewController) {
+    moment.locale('es');
     let preselectedDate = moment(this.navParams.get('selectedDay')).format();
     this.event.startTime = preselectedDate;
     this.event.endTime = preselectedDate;

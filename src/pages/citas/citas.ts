@@ -4,6 +4,8 @@ import { NavController, ModalController, AlertController } from 'ionic-angular';
 import * as moment from 'moment';
 import { InicioPage } from '../inicio/inicio';
 
+import { TabsControllerPage } from '../tabs-controller/tabs-controller';
+
 @Component({
   selector: 'page-citas',
   templateUrl: 'citas.html'
@@ -14,7 +16,7 @@ export class CitasPage {
   selectedDay = new Date();
  
   calendar = {
-    mode: 'month ',
+    mode: 'month',
     currentDate: new Date()
   };
   constructor (public navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
@@ -23,10 +25,11 @@ export class CitasPage {
     this.navCtrl.push(ConfirmarCitaPage);
   }goToCitas(params){
     if (!params) params = {};
-    this.navCtrl.push(CitasPage);
+    this.navCtrl.push(TabsControllerPage, {index:2}); 
   }goToInicio(params){
     if (!params) params = {};
-    this.navCtrl.push(InicioPage);
+    this.navCtrl.push(TabsControllerPage, {index:0});    
+
   }
   addEvent() {
     let modal = this.modalCtrl.create('EventModalPage', {selectedDay: this.selectedDay});

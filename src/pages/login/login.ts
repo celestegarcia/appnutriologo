@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,   Tabs } from 'ionic-angular';
 import { InicioPage } from '../inicio/inicio';
 import { OlvideContrasenaPage } from '../olvide-contrasena/olvide-contrasena';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
@@ -20,14 +20,14 @@ export class LoginPage {
   }
   goToInicio(params){
     if (!params) params = {};
+    //this.tab = this.navCtrl.parent;
+    //this.navCtrl.push(TabsControllerPage, {index:2});   
 
     //Guardar datos del compa
     localStorage.setItem("usrEmail", this.user.email);
     localStorage.setItem("usrPass", this.user.password);
-    this.navCtrl.push(TabsControllerPage,this.user);
-
-
-    
+    //le dice a cual pestana de tabs debe abrir
+    this.navCtrl.push(TabsControllerPage,{index:0}, this.user);   
 
   }goToOlvideContrasena(params){
     if (!params) params = {};
