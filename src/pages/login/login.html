@@ -10,27 +10,44 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding style="background:url(assets/img/UQLxzY0VQHynJ00TWBpG_pexels-photo-255501.jpeg) no-repeat center;background-size:cover;" id="page5">
-  <form id="login-form1">
+<ion-content padding style="background:url(assets/img/UQLxzY0VQHynJ00TWBpG_pexels-photo-255501.jpeg) no-repeat center;background-size:cover;"
+  id="page5">
+  <form id="login-form1" [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>
     <div class="spacer" style="height:40px;" id="login-spacer2"></div>
     <ion-list id="login-list2">
       <ion-item id="login-input1">
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="" [(ngModel)]="user.email" name="email"></ion-input>
+        <ion-input type="email" placeholder="" [(ngModel)]="user.email" name="email" formControlName="emaill"></ion-input>
       </ion-item>
+
+      <div *ngIf="myForm.get('emaill').errors && myForm.get('emaill').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('emaill').hasError('required')">Email is required</p>
+        <p color="danger" ion-text *ngIf="myForm.get('emaill').hasError('pattern')"> Email es invalido</p>
+      </div>
+
       <ion-item id="login-input2">
         <ion-label>
           Password
         </ion-label>
-        <ion-input type="password" placeholder="" [(ngModel)]="user.password" name="password"></ion-input>
+        <ion-input type="password" placeholder="" [(ngModel)]="user.password" name="password" formControlName="pass"></ion-input>
       </ion-item>
+      <div *ngIf="myForm.get('pass').errors && myForm.get('pass').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('pass').hasError('required')">Password is required</p>
+      </div>
+
+
     </ion-list>
-    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+    <div class="spacer" style="height:20px;" id="login-spacer1"></div>
     <button id="login-button1" ion-button color="stable" block on-click="goToInicio()">
       Iniciar Sesion
     </button>
+
+    <div *ngIf="valido">
+      <p color="danger" ion-text>Usuario o Contraseña son invalidos</p>
+    </div>
+
     <button id="login-button2" ion-button clear color="positive" block on-click="goToOlvideContrasena()">
       olvidaste tu contraseña?
     </button>
