@@ -36,7 +36,7 @@ export class LoginPage {
 
   //guarda los datos del formulario
   saveData(){
-    alert(JSON.stringify(this.myForm.value));
+    //alert(JSON.stringify(this.myForm.value));
   }
 
   goToInicio(params){

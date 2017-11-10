@@ -28,6 +28,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NgCalendarModule  } from 'ionic2-calendar';
 
+//Para http
+import { HttpModule } from "@angular/http";
+import  {PostPreReg} from "../services/postprereg";
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -55,6 +60,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   imports: [
     NgCalendarModule,
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'top'})
   ],
   bootstrap: [IonicApp],
@@ -84,6 +90,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   providers: [
     StatusBar,
     SplashScreen,
+    PostPreReg,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

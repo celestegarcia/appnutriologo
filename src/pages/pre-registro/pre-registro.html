@@ -14,25 +14,37 @@
       <ion-label>
         Nombre
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" name="nombre" [(ngModel)]="prereg.nombre"></ion-input>
+    </ion-item>
+    <ion-item id="preRegistro-inputApe_Pat">
+      <ion-label>
+        Apellido Paterno
+      </ion-label>
+      <ion-input type="text" placeholder="" name="ape_paterno" [(ngModel)]="prereg.ape_paterno"></ion-input>
+    </ion-item>
+    <ion-item id="preRegistro-inputApe_Mat">
+      <ion-label>
+        Apellido Materno
+      </ion-label>
+      <ion-input type="text" placeholder="" name="ape_materno" [(ngModel)]="prereg.ape_materno"></ion-input>
     </ion-item>
     <ion-item id="preRegistro-input15">
       <ion-label>
         Email
       </ion-label>
-      <ion-input type="email" placeholder=""></ion-input>
+      <ion-input type="email" placeholder="" name="email" [(ngModel)]="prereg.email"></ion-input>
     </ion-item>
     <ion-item id="preRegistro-input16">
       <ion-label>
         Edad
       </ion-label>
-      <ion-input type="number" placeholder=""></ion-input>
+      <ion-input type="number" placeholder="" name="edad" [(ngModel)]="prereg.edad"></ion-input>
     </ion-item>
     <ion-item id="preRegistro-select1">
       <ion-label>
         Sexo
       </ion-label>
-      <ion-select name="">
+      <ion-select name="" name="sexo" [(ngModel)]="prereg.sexo">
         <ion-option>
           Femenino
         </ion-option>
@@ -41,38 +53,38 @@
         </ion-option>
       </ion-select>
     </ion-item>
-    <ion-item id="preRegistro-input17">
+    <ion-item id="preRegistro-input17" >
       <ion-label>
         Telefono(Opcional)
       </ion-label>
-      <ion-input type="tel" placeholder=""></ion-input>
+      <ion-input type="tel" placeholder="" name="telefono" [(ngModel)]="prereg.telefono"></ion-input>
     </ion-item>
     <div class="spacer" style="width:300px;height:18px;" id="preRegistro-spacer4"></div>
     <ion-item id="preRegistro-textarea1">
       <ion-label>
         Meta
       </ion-label>
-      <ion-textarea placeholder="p.ej. Subir/Bajar de peso"></ion-textarea>
+      <ion-textarea placeholder="p.ej. Subir/Bajar de peso" name="meta" [(ngModel)]="prereg.meta"></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea2">
       <ion-label>
         Patologías
       </ion-label>
-      <ion-textarea placeholder="¿Sufre alguna enfermedad?"></ion-textarea>
+      <ion-textarea placeholder="¿Sufre alguna enfermedad?" name="patologia" [(ngModel)]="prereg.patologia"></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea3">
       <ion-label>
         Alergias
       </ion-label>
-      <ion-textarea placeholder="¿Padece de alergias?"></ion-textarea>
+      <ion-textarea placeholder="¿Padece de alergias?" name="alergias" [(ngModel)]="prereg.alergias"></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea4">
       <ion-label>
         Medicamento
       </ion-label>
-      <ion-textarea placeholder="¿Esta tomando algún medicamento?"></ion-textarea>
+      <ion-textarea placeholder="¿Esta tomando algún medicamento?" name="medicamentos" [(ngModel)]="prereg.medicamentos"></ion-textarea>
     </ion-item>
-    <button id="preRegistro-button12" ion-button color="positive" block>
+    <button id="preRegistro-button12" ion-button (click)="prepararPost()" color="positive" block>
       Registrarse
     </button>
   </form>
