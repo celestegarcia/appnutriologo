@@ -43,7 +43,7 @@
       <p color="danger" ion-text *ngIf="myForm.get('email').hasError('pattern')">*Email invalido</p>
     </ion-item>
     <ion-item>
-      <ion-label floating>Fecha de nacimiento:</ion-label>
+      <ion-label >Fecha de nacimiento:</ion-label>
       <ion-input formControlName="fec" name="fecha_naci" type="date" [(ngModel)]="prereg.fecha_naci"></ion-input>
     </ion-item>
     <ion-item *ngIf="myForm.get('fec').errors && myForm.get('fec').dirty">
