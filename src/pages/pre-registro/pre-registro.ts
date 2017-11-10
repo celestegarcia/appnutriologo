@@ -89,8 +89,8 @@ prepararPost(){
           '&meta='+this.prereg.meta+'&patologias='+this.prereg.patologias+'&alergias='+this.prereg.alergias+
           '&medicamentos='+this.prereg.medicamentos+'&fecha_naci='+this.prereg.fecha_naci, body, { headers: headers }).toPromise()
     .then(data => {
-      console.log(data._body);
-      this.confirmarPost(data._body);
+      console.log((data as any)._body);
+      this.confirmarPost((data as any)._body);
     }).catch(error => {
       console.log(error);
       let alert = this.alertCtrl.create({

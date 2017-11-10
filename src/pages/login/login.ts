@@ -109,8 +109,8 @@ export class LoginPage {
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    body.email="hudson2@gmail.com"; 
-    body.pwd="1234";
+    (body as any).email="hudson2@gmail.com"; 
+    (body as any).pwd="1234";
     this.http
     .post('http://104.131.121.55/loginPaciente?email=hudson2@gmail.com&pwd=1234', body, { headers: headers })
     .toPromise().then(data => {
