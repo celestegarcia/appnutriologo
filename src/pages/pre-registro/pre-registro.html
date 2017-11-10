@@ -9,47 +9,56 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding style="background:url(assets/img/LJbRHaq0QdGojrSsLS0a_pexels-photo-272242.jpeg) no-repeat center;background-size:cover;" id="page12">
-  <form id="preRegistro-form9">
-    <ion-item id="preRegistro-input14">
-      <ion-label>
+  <form  [formGroup]="myForm" (ngSubmit)="prepararPost()" novalidate>
+    <ion-item>
+      <ion-label floating>
         Nombre
       </ion-label>
-      <ion-input type="text" placeholder="" name="nombre" [(ngModel)]="prereg.nombre"></ion-input>
+      <ion-input type="text" name="nombre"  formControlName="name" [(ngModel)]="prereg.nombre" ></ion-input> </ion-item>
+      <ion-item *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('name').hasError('required')">*Nombre es obligatorio</p>
     </ion-item>
-    <ion-item id="preRegistro-inputApe_Pat">
-      <ion-label>
+    <ion-item>
+      <ion-label floating>
         Apellido Paterno
       </ion-label>
-      <ion-input type="text" placeholder="" name="ape_paterno" [(ngModel)]="prereg.ape_paterno"></ion-input>
+      <ion-input type="text" name="ape_paterno" formControlName="pat" [(ngModel)]="prereg.ape_paterno" ></ion-input> </ion-item>
+      <ion-item *ngIf="myForm.get('pat').errors && myForm.get('pat').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('pat').hasError('required')">*Apellido paterno obligatorio</p>
     </ion-item>
-    <ion-item id="preRegistro-inputApe_Mat">
-      <ion-label>
+    <ion-item>
+      <ion-label floating>
         Apellido Materno
       </ion-label>
-      <ion-input type="text" placeholder="" name="ape_materno" [(ngModel)]="prereg.ape_materno"></ion-input>
+      <ion-input type="text" name="ape_materno" formControlName="mat" [(ngModel)]="prereg.ape_materno" ></ion-input> </ion-item>
+      <ion-item *ngIf="myForm.get('mat').errors && myForm.get('mat').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('mat').hasError('required')">*Apellido materno obligatorio</p>
     </ion-item>
-    <ion-item id="preRegistro-input15">
-      <ion-label>
-        Email
-      </ion-label>
-      <ion-input type="email" placeholder="" name="email" [(ngModel)]="prereg.email"></ion-input>
+    <ion-item>
+      <ion-label floating>Email:</ion-label>
+      <ion-input formControlName="email" name="email" type="text" [(ngModel)]="prereg.email" ></ion-input>
     </ion-item>
-    <ion-item id="preRegistro-input16">
-      <ion-label>
-        Fecha de Nacimiento
-      </ion-label>
-      <ion-input type="date" placeholder="" name="fecha_naci" [(ngModel)]="prereg.fecha_naci"></ion-input>
+    <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">*Email es obligatorio</p>
+      <p color="danger" ion-text *ngIf="myForm.get('email').hasError('pattern')">*Email invalido</p>
     </ion-item>
-    <ion-item id="preRegistro-select1">
+    <ion-item>
+      <ion-label floating>Fecha de nacimiento:</ion-label>
+      <ion-input formControlName="fec" name="fecha_naci" type="date" [(ngModel)]="prereg.fecha_naci"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('fec').errors && myForm.get('fec').dirty">
+      <p color="danger" ion-text *ngIf="myForm.get('fec').hasError('required')">*Campo obligatorio</p>
+    </ion-item>
+    <ion-item>
       <ion-label>
         Sexo
       </ion-label>
-      <ion-select name="" name="sexo" [(ngModel)]="prereg.sexo">
+      <ion-select formControlName="sexo" name="" name="sexo" [(ngModel)]="prereg.sexo" >
         <ion-option value="F">
-          F
+          Femenino
         </ion-option>
-        <ion-option value="M"> 
-          M
+        <ion-option value="M">
+          Masculino
         </ion-option>
       </ion-select>
     </ion-item>
@@ -57,32 +66,32 @@
       <ion-label>
         Telefono(Opcional)
       </ion-label>
-      <ion-input type="tel" placeholder="" name="telefono" [(ngModel)]="prereg.telefono"></ion-input>
+      <ion-input formControlName="telefono" type="tel" placeholder="" name="telefono" [(ngModel)]="prereg.telefono" ></ion-input>
     </ion-item>
     <div class="spacer" style="width:300px;height:18px;" id="preRegistro-spacer4"></div>
     <ion-item id="preRegistro-textarea1">
       <ion-label>
         Meta
       </ion-label>
-      <ion-textarea placeholder="p.ej. Subir/Bajar de peso" name="meta" [(ngModel)]="prereg.meta"></ion-textarea>
+      <ion-textarea formControlName="meta" placeholder="p.ej. Subir/Bajar de peso" name="meta" [(ngModel)]="prereg.meta" ></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea2">
       <ion-label>
         Patologías
       </ion-label>
-      <ion-textarea placeholder="¿Sufre alguna enfermedad?" name="patologias" [(ngModel)]="prereg.patologias"></ion-textarea>
+      <ion-textarea formControlName="patologias" placeholder="¿Sufre alguna enfermedad?" name="patologia" [(ngModel)]="prereg.patologias" ></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea3">
       <ion-label>
         Alergias
       </ion-label>
-      <ion-textarea placeholder="¿Padece de alergias?" name="alergias" [(ngModel)]="prereg.alergias"></ion-textarea>
+      <ion-textarea formControlName="alergias" placeholder="¿Padece de alergias?" name="alergias" [(ngModel)]="prereg.alergias"></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea4">
       <ion-label>
         Medicamento
       </ion-label>
-      <ion-textarea placeholder="¿Esta tomando algún medicamento?" name="medicamentos" [(ngModel)]="prereg.medicamentos"></ion-textarea>
+      <ion-textarea formControlName="medicamentos" placeholder="¿Esta tomando algún medicamento?" name="medicamentos" [(ngModel)]="prereg.medicamentos"></ion-textarea>
     </ion-item>
     <button id="preRegistro-button12" ion-button (click)="prepararPost()" color="positive" block>
       Registrarse
