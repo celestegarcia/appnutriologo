@@ -36,20 +36,20 @@
     </ion-item>
     <ion-item id="preRegistro-input16">
       <ion-label>
-        Edad
+        Fecha de Nacimiento
       </ion-label>
-      <ion-input type="number" placeholder="" name="edad" [(ngModel)]="prereg.edad"></ion-input>
+      <ion-input type="date" placeholder="" name="fecha_naci" [(ngModel)]="prereg.fecha_naci"></ion-input>
     </ion-item>
     <ion-item id="preRegistro-select1">
       <ion-label>
         Sexo
       </ion-label>
       <ion-select name="" name="sexo" [(ngModel)]="prereg.sexo">
-        <ion-option>
-          Femenino
+        <ion-option value="F">
+          F
         </ion-option>
-        <ion-option>
-          Masculino
+        <ion-option value="M"> 
+          M
         </ion-option>
       </ion-select>
     </ion-item>
@@ -70,7 +70,7 @@
       <ion-label>
         Patologías
       </ion-label>
-      <ion-textarea placeholder="¿Sufre alguna enfermedad?" name="patologia" [(ngModel)]="prereg.patologia"></ion-textarea>
+      <ion-textarea placeholder="¿Sufre alguna enfermedad?" name="patologias" [(ngModel)]="prereg.patologias"></ion-textarea>
     </ion-item>
     <ion-item id="preRegistro-textarea3">
       <ion-label>

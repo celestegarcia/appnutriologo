@@ -60,6 +60,7 @@ export class LoginPage {
     this.navCtrl.push(LoginPage);
   }
   goToPreReg(params){
+    
     if (!params) params = {};
     this.navCtrl.push(PreRegistroPage);
   }

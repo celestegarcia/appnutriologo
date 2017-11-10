@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import  {PostPreReg} from "../../services/postprereg";
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Injectable } from "@angular/core";
+import { LoginPage } from '../login/login';
+import { AlertController } from 'ionic-angular';
 
 
-import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -20,7 +20,7 @@ export class PreRegistroPage {
     ape_materno:"",
     email:"",
     fecha_naci:"",
-    sexo:"  - - -",
+    sexo:"",
     telefono:"",
     meta:"",
     patologias:"",
@@ -43,24 +43,31 @@ export class PreRegistroPage {
   public cliente: any;
   public data: any;
 
-  constructor(public navCtrl: NavController,public http : Http, public client: PostPreReg) {
+  constructor(public navCtrl: NavController,public http : Http, public client: PostPreReg, private alertCtrl: AlertController) {
     //this.cliente=http;
     //this.cliente.pruebaGet();
   }
 
-  enviarFormulario(respuesta){
+  confirmarPost(respuesta){
 
 
-    //this.pruebaGet();
     
-    alert(respuesta.name);
+    let alert = this.alertCtrl.create({
+      title: 'Registro exitoso',
+      subTitle: JSON.parse(respuesta).result,
+      buttons: ['Aceptar']
+    });
+    alert.present();
+    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.popToRoot();
+    
   }
 
   pruebaGet(){
     this.http.get("http://104.131.121.55/").subscribe(res=>{
         this.data = res.json();
         console.log(this.data);
-        this.enviarFormulario(res.json());
+        //this.enviarFormulario(res.json());
         //return this.data;
     },error=> {
       console.log(error);  
@@ -68,20 +75,31 @@ export class PreRegistroPage {
 }
 
 prepararPost(){
+  this.prereg.sexo= "F";
+  this.prereg.fecha_naci="1991-01-01";
   var body = this.prereg;
   var headers = new Headers();
   headers.append('Content-Type', 'application/x-www-form-urlencoded');
+  //headers.append('access-control-allow-origin', '*');
   
   this.http
-    .post('http://104.131.121.55/setPreRegistro', body, { headers: headers }).toPromise()
+    .post('http://104.131.121.55/setPreRegistro?nombre='+this.prereg.nombre+
+          '&ape_paterno='+this.prereg.ape_paterno+'&ape_materno='+this.prereg.ape_materno+
+          '&email='+this.prereg.email+'&sexo='+this.prereg.sexo+'&telefono='+this.prereg.telefono+
+          '&meta='+this.prereg.meta+'&patologias='+this.prereg.patologias+'&alergias='+this.prereg.alergias+
+          '&medicamentos='+this.prereg.medicamentos+'&fecha_naci='+this.prereg.fecha_naci, body, { headers: headers }).toPromise()
     .then(data => {
-      console.log(data);
+      console.log(data._body);
+      this.confirmarPost(data._body);
     }).catch(error => {
-      console.log(error.status);
+      console.log(error);
+      let alert = this.alertCtrl.create({
+        title: 'Error al Registrar',
+        subTitle: 'Hubo un error al procesar su solicitud, verifique su información, o intentelo más tarde.',
+        buttons: ['Aceptar']
+      });
+      alert.present();
     });
-
-    
-
 }
   
 }
