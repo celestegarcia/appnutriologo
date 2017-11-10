@@ -19,28 +19,28 @@
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="" [(ngModel)]="user.email" name="email" formControlName="emaill"></ion-input>
+        <ion-input type="email" placeholder="" [(ngModel)]="email" name="email" formControlName="email"></ion-input>
       </ion-item>
 
-      <div *ngIf="myForm.get('emaill').errors && myForm.get('emaill').dirty">
-        <p color="danger" ion-text *ngIf="myForm.get('emaill').hasError('required')">Email is required</p>
-        <p color="danger" ion-text *ngIf="myForm.get('emaill').hasError('pattern')"> Email es invalido</p>
+      <div *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Email is required</p>
+        <p color="danger" ion-text *ngIf="myForm.get('email').hasError('pattern')"> Email es invalido</p>
       </div>
 
       <ion-item id="login-input2">
         <ion-label>
           Password
         </ion-label>
-        <ion-input type="password" placeholder="" [(ngModel)]="user.password" name="password" formControlName="pass"></ion-input>
+        <ion-input type="password" placeholder="" [(ngModel)]="pwd" name="pwd" formControlName="pwd"></ion-input>
       </ion-item>
-      <div *ngIf="myForm.get('pass').errors && myForm.get('pass').dirty">
-        <p color="danger" ion-text *ngIf="myForm.get('pass').hasError('required')">Password is required</p>
+      <div *ngIf="myForm.get('pwd').errors && myForm.get('pwd').dirty">
+        <p color="danger" ion-text *ngIf="myForm.get('pwd').hasError('required')">Password is required</p>
       </div>
 
 
     </ion-list>
     <div class="spacer" style="height:20px;" id="login-spacer1"></div>
-    <button id="login-button1" ion-button color="stable" block on-click="goToInicio()">
+    <button id="login-button1" ion-button color="stable" block on-click="halp()">
       Iniciar Sesion
     </button>
 
