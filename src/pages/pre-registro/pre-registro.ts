@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import  {PostPreReg} from "../../services/postprereg";
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { LoginPage } from '../login/login';
@@ -13,7 +14,10 @@ import 'rxjs/add/operator/toPromise';
   templateUrl: 'pre-registro.html'
 })
 export class PreRegistroPage {
-
+  myForm: FormGroup;
+  public password1:string;
+  public password2:string;
+  public errMsg:boolean = true;
   public prereg:any = {
     nombre:"",
     ape_paterno:"",
@@ -43,10 +47,32 @@ export class PreRegistroPage {
   public cliente: any;
   public data: any;
 
-  constructor(public navCtrl: NavController,public http : Http, public client: PostPreReg, private alertCtrl: AlertController) {
-    //this.cliente=http;
-    //this.cliente.pruebaGet();
-  }
+  constructor(public navCtrl: NavController,public http : Http, public client: PostPreReg, private alertCtrl: AlertController, public fb: FormBuilder) {
+    this.myForm = this.fb.group({
+      name: ['', [Validators.required]],
+      pat: ['', [Validators.required]],
+      mat: ['', [Validators.required]],
+      email: ['', [Validators.required,  Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      fec: null,
+      sexo : null,
+      telefono:null,
+      meta : null,
+      patologias : null,
+      alergias :null,
+      medicamentos : null,
+
+    },{
+   
+    }
+  
+  
+  );
+
+
+}
+saveData(){
+//alert(JSON.stringify(this.myForm.value));
+}
 
   confirmarPost(respuesta){
 
