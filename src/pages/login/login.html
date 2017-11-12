@@ -19,7 +19,7 @@
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="" [(ngModel)]="email" name="email" formControlName="email"></ion-input>
+        <ion-input type="email" placeholder="" [(ngModel)]="email" name="email" formControlName="email" ></ion-input>
       </ion-item>
 
       <div *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
