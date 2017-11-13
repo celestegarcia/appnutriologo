@@ -103,8 +103,8 @@ saveData(){
 }
 
 prepararPost(){
-  this.prereg.sexo= "F";
-  this.prereg.fecha_naci="1991-01-01";
+  //this.prereg.sexo= "F";
+  //this.prereg.fecha_naci="1991-01-01";
   var body = this.prereg;
   var headers = new Headers();
   headers.append('Content-Type', 'application/x-www-form-urlencoded');
