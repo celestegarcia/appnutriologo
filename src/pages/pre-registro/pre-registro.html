@@ -93,7 +93,7 @@
       </ion-label>
       <ion-textarea formControlName="medicamentos" placeholder="¿Esta tomando algún medicamento?" name="medicamentos" [(ngModel)]="prereg.medicamentos"></ion-textarea>
     </ion-item>
-    <button id="preRegistro-button12" ion-button (click)="prepararPost()" color="positive" block>
+    <button id="preRegistro-button12" ion-button (tap)="prepararPost()" color="positive" block>
       Registrarse
     </button>
   </form>

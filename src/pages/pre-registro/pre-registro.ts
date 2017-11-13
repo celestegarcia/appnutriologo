@@ -84,6 +84,8 @@ saveData(){
       buttons: ['Aceptar']
     });
     alert.present();
+    //this.navCtrl.push(LoginPage);
+    
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
     
@@ -113,7 +115,8 @@ prepararPost(){
           '&ape_paterno='+this.prereg.ape_paterno+'&ape_materno='+this.prereg.ape_materno+
           '&email='+this.prereg.email+'&sexo='+this.prereg.sexo+'&telefono='+this.prereg.telefono+
           '&meta='+this.prereg.meta+'&patologias='+this.prereg.patologias+'&alergias='+this.prereg.alergias+
-          '&medicamentos='+this.prereg.medicamentos+'&fecha_naci='+this.prereg.fecha_naci, body, { headers: headers }).toPromise()
+          '&medicamentos='+this.prereg.medicamentos+'&fecha_naci='+this.prereg.fecha_naci,
+           null, { headers: headers }).toPromise()
     .then(data => {
       console.log((data as any)._body);
       this.confirmarPost((data as any)._body);
