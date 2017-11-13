@@ -9,8 +9,35 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding style="background:url(assets/img/vIhyOSXXLyowfuITjQMk_diet-calorie-counter-weight-loss-health.jpg) no-repeat center;background-size:cover;" id="page11">
-  <img src="assets/img/bodyfat-vs-calories-15Sep13.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  <form id="seguimiento-form5">
+  
+  <ion-card>
+    <ion-card-header>
+      Peso
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #pesoCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Masa Corporal
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #masaCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      % Grasa Corporal
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #muscCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  
+   <form id="seguimiento-form5">
     <ion-item id="seguimiento-checkbox2">
       <ion-label>
         Desayuno
