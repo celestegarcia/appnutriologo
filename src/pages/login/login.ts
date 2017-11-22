@@ -139,6 +139,11 @@ export class LoginPage {
 
 
   }
+
+  pasa(params){
+    if (!params) params = {};
+    this.navCtrl.push(TabsControllerPage);
+  }
   goToOlvideContrasena(params){
     if (!params) params = {};
     this.navCtrl.push(OlvideContrasenaPage);
