@@ -11,45 +11,56 @@
 <ion-content padding style="background:url(assets/img/Z6fclGvyQV2TfxLuMU9H_pexels-photo-326281.jpeg) no-repeat center;background-size:cover;" id="page3">
   <ion-card id="inicio-card26">
     <ion-list>
-      <ion-item color="none" id="inicio-list-item41">
-        <ion-avatar item-left>
-          <img />
-        </ion-avatar>
-        <h2>
-          Hola {{user.nombre}}
-        </h2>
-      </ion-item>
-      <div style="width:100%;height:2px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
-        <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
-      </div>
-      <ion-item-divider color="light" id="inicio-list-item-divider4">
-        Menu 1 (slide)
-      </ion-item-divider>
-      <div id="inicio-markdown17" class="show-list-numbers-and-dots">
-        <p style="margin-top:0px;color:#000000;">
-          2 tazas de clara de huevo San Juan®
-        </p>
-        <p style="color:#000000;">
-          2 piezas de salchicha de pavo
-        </p>
-        <p style="color:#000000;">
-          1/2 taza de leche light
-        </p>
-      </div>
-      <ion-item-divider color="light" id="inicio-list-item-divider5">
-        Menu 2
-      </ion-item-divider>
-      <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-        <p style="margin-top:0px;color:#000000;">
-          2 tazas de clara de huevo San Juan®
-        </p>
-        <p style="color:#000000;">
-          2 piezas de salchicha de pavo
-        </p>
-        <p style="color:#000000;">
-          1/2 taza de leche light
-        </p>
-      </div>
+      <ion-slides>
+        <ion-slide>
+          <ion-item-divider color="light" id="inicio-list-item-divider4">
+            Desayuno Menu 1 
+          </ion-item-divider>
+          <div id="inicio-markdown17" class="show-list-numbers-and-dots">
+            <p style="margin-top:0px;color:#000000;">
+              2 tazas de clara de huevo San Juan®
+            </p>
+            <p style="color:#000000;">
+              2 piezas de salchicha de pavo
+            </p>
+            <p style="color:#000000;">
+              1/2 taza de leche light
+            </p>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <ion-item-divider color="light" id="inicio-list-item-divider5">
+            Desayuno Menu 2
+          </ion-item-divider>
+          <div id="inicio-markdown18" class="show-list-numbers-and-dots">
+            <p style="margin-top:0px;color:#000000;">
+              2 tazas de clara de huevo San Juan®
+            </p>
+            <p style="color:#000000;">
+              2 piezas de salchicha de pavo
+            </p>
+            <p style="color:#000000;">
+              1/2 taza de leche light
+            </p>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <ion-item-divider color="light" id="inicio-list-item-divider5">
+            Desayuno Menu 3
+          </ion-item-divider>
+          <div id="inicio-markdown18" class="show-list-numbers-and-dots">
+            <p style="margin-top:0px;color:#000000;">
+              2 tazas de clara de huevo San Juan®
+            </p>
+            <p style="color:#000000;">
+              2 piezas de salchicha de pavo
+            </p>
+            <p style="color:#000000;">
+              1/2 taza de leche light
+            </p>
+          </div>
+        </ion-slide>
+      </ion-slides>
       <ion-item-divider color="light" id="inicio-list-item-divider6">
         Grafica de Avance 
       </ion-item-divider>
@@ -58,7 +69,7 @@
 
   <ion-card>
     <ion-card-header>
-      Historial de Avance
+      Grafica de Barras
     </ion-card-header>
     <ion-card-content>
       <canvas #barCanvas></canvas>
@@ -67,7 +78,7 @@
 
   <ion-card>
     <ion-card-header>
-      Historial de Avance
+      Grafica Lineal
     </ion-card-header>
     <ion-card-content>
       <canvas #lineCanvas></canvas>
