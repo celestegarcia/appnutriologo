@@ -11,6 +11,11 @@ import { TabsControllerPage } from '../tabs-controller/tabs-controller';
   templateUrl: 'citas.html'
 })
 export class CitasPage {
+
+  public hora:String =  "";
+  public fecha:String =  "";
+  public horas:string[] =["12:00","12:30","1:00","1:30"];
+
   eventSource = [];
   viewTitle: string;
   selectedDay = new Date();
@@ -70,4 +75,6 @@ export class CitasPage {
   onTimeSelected(ev) {
     this.selectedDay = ev.selectedTime;
   }
+
+  
 }
