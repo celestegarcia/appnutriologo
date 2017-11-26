@@ -25,7 +25,7 @@
     </ion-toolbar>  
     <ion-card>
         <div [ngSwitch]="des">
-            <ion-list *ngSwitchCase="'desayuno1'">
+            <ion-list class="accordion-list" *ngSwitchCase="'desayuno1'">
                 <div radio-group>
                 <div> <button ion-button class="colores" (click)="showAlert(1)"><ion-radio color="danger"></ion-radio>ver Menu1</button></div>
                  <div>   <button ion-button class="colores" (click)="showAlert(2)"><ion-radio color="danger"></ion-radio>ver Menu2</button></div>
