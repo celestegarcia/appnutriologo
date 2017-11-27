@@ -7,15 +7,15 @@
   <ion-content>
     <ion-item>
         <ion-label >Fecha</ion-label>
-        <ion-input name="fecha" type="date" [(ngModel)]="fecha"></ion-input>
+        <ion-input name="fecha" type="date" [(ngModel)]="cita.fecha"></ion-input>
     </ion-item>
   <ion-item>
       <ion-label >Hora</ion-label>
-    <ion-select name="" name="hora" [(ngModel)]="hora">
+    <ion-select name="" name="hora" [(ngModel)]="cita.hora">
         <ion-option *ngFor="let n of horas" value="{{n}}">{{n}}</ion-option>
     </ion-select>
   </ion-item>
-        <button id="citas-button16" ion-button color="positive" block on-click="goToInicio()">
+        <button id="citas-button16" ion-button color="positive" block on-click="prepararPost()">
             Confirmar
           </button>
   </ion-content>
