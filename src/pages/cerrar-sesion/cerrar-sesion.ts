@@ -9,12 +9,17 @@ import { TabsControllerPage } from '../tabs-controller/tabs-controller';
   templateUrl: 'cerrar-sesion.html'
 })
 export class CerrarSesionPage {
+  public usuario:string=""
 
   constructor(public navCtrl: NavController) {
+    this.usuario=localStorage.getItem("email");
   }
   goToLogin(params){
     if (!params) params = {};
     //this.navCtrl.push(LoginPage);
+
+    localStorage.clear();
+
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
   }goToInicio(params){

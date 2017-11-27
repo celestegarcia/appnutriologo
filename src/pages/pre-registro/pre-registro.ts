@@ -75,9 +75,6 @@ saveData(){
 }
 
   confirmarPost(respuesta){
-
-
-    
     let alert = this.alertCtrl.create({
       title: 'Registro exitoso',
       subTitle: JSON.parse(respuesta).result,
@@ -88,7 +85,6 @@ saveData(){
     
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
-    
   }
 
   pruebaGet(){

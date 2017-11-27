@@ -32,8 +32,10 @@ export class LoginPage {
     email:"",
     pwd:""
   }
+  public idLogeado:string=""
 
-  constructor(public navCtrl: NavController, public fb: FormBuilder,public http : Http,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public fb: FormBuilder,public http : Http,private alertCtrl: AlertController) 
+  {
     this.error = false;
     this.valido = false;
     this.myForm = this.fb.group({
@@ -41,6 +43,11 @@ export class LoginPage {
       pwd: ['', [Validators.required]]
     });
 
+    if(localStorage.getItem("paciente_id")){
+      this.navCtrl.setRoot(InicioPage);
+      this.navCtrl.popToRoot();
+    }
+    
   }
 
   //guarda los datos del formulario
