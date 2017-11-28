@@ -44,7 +44,7 @@ export class LoginPage {
     });
 
     if(localStorage.getItem("paciente_id")){
-      this.navCtrl.setRoot(InicioPage);
+      this.navCtrl.setRoot(TabsControllerPage);
       this.navCtrl.popToRoot();
     }
     

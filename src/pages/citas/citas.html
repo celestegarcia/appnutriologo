@@ -7,11 +7,11 @@
   <ion-content>
     <ion-item>
         <ion-label >Fecha</ion-label>
-        <ion-input name="fecha" type="date" [(ngModel)]="cita.fecha"></ion-input>
+        <ion-input name="fecha" type="date" (ionChange)="obtenerHoras()"  [(ngModel)]="cita.fecha"></ion-input>
     </ion-item>
   <ion-item>
       <ion-label >Hora</ion-label>
-    <ion-select name="" name="hora" [(ngModel)]="cita.hora">
+    <ion-select name="" name="hora" disabled ="{{disableHoras}}"  [(ngModel)]="cita.hora">
         <ion-option *ngFor="let n of horas" value="{{n}}">{{n}}</ion-option>
     </ion-select>
   </ion-item>
