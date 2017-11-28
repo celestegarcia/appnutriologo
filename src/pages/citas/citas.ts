@@ -90,7 +90,7 @@ export class CitasPage {
     alert.present();
     //this.navCtrl.push(LoginPage);
     
-    this.navCtrl.setRoot(InicioPage);
+    this.navCtrl.setRoot(TabsControllerPage, {index:2});
     this.navCtrl.popToRoot();
   }
   prueba(){ 
