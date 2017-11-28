@@ -28,14 +28,14 @@
     <ion-card>
         <div [ngSwitch]="des">
             <ion-list radio-group  *ngSwitchCase="'desayuno1'">
-                <ion-item (click)="showAlert(21)"><ion-label> Huevo con jamon</ion-label> <ion-radio value="hj" checked></ion-radio></ion-item>
-                <ion-item (click)="showAlert(2)"> <ion-label>Huevo con Salchicha</ion-label> <ion-radio value="hs" ></ion-radio></ion-item>
-                <ion-item (click)="showAlert(3)"> <ion-label>Chilaquiles</ion-label> <ion-radio value="cq" ></ion-radio></ion-item>                
+                <ion-item ><ion-label> Huevo con jamon</ion-label> <ion-radio (click)="showAlert(1)" value="hj" checked></ion-radio></ion-item>
+                <ion-item > <ion-label>Huevo con Salchicha</ion-label> <ion-radio (click)="showAlert(2)" value="hs" ></ion-radio></ion-item>
+                <ion-item > <ion-label>Chilaquiles</ion-label> <ion-radio (click)="showAlert(3)" value="cq" ></ion-radio></ion-item>                
             </ion-list>
               <ion-list  radio-group   *ngSwitchCase="'colacion1'">
-                <ion-item (click)="showAlert(1)"> <ion-label>Frutas</ion-label> <ion-radio value="hj" checked></ion-radio></ion-item>
-                <ion-item (click)="showAlert(2)"> <ion-label>Yogurth</ion-label> <ion-radio value="hs" ></ion-radio></ion-item>
-                <ion-item (click)="showAlert(3)"> <ion-label>Cereal</ion-label> <ion-radio value="cq" ></ion-radio></ion-item>                
+                <ion-item > <ion-label>Frutas</ion-label> <ion-radio (click)="showAlert(1)" value="hj" checked></ion-radio></ion-item>
+                <ion-item > <ion-label>Yogurth</ion-label> <ion-radio (click)="showAlert(2)" value="hs" ></ion-radio></ion-item>
+                <ion-item > <ion-label>Cereal</ion-label> <ion-radio (click)="showAlert(3)" value="cq" ></ion-radio></ion-item>                
             </ion-list>
         </div>
     </ion-card>
@@ -58,14 +58,14 @@
        <ion-card>
            <div [ngSwitch]="des2">
               <ion-list radio-group  *ngSwitchCase="'comida'">
-                  <ion-item on-click="showAlert(1)"><ion-label> Huevo con jamon</ion-label> <ion-radio value="hj" checked></ion-radio></ion-item>
-                  <ion-item on-click="showAlert(2)"> <ion-label>Huevo con Salchicha</ion-label> <ion-radio value="hs" ></ion-radio></ion-item>
-                  <ion-item on-click="showAlert(3)"> <ion-label>Chilaquiles</ion-label> <ion-radio value="cq" ></ion-radio></ion-item>                
+                  <ion-item ><ion-label> Huevo con jamon</ion-label> <ion-radio (click)="showAlert(1)" value="hj" checked></ion-radio></ion-item>
+                  <ion-item > <ion-label>Huevo con Salchicha</ion-label> <ion-radio (click)="showAlert(2)" value="hs" ></ion-radio></ion-item>
+                  <ion-item > <ion-label>Chilaquiles</ion-label> <ion-radio (click)="showAlert(3)" value="cq" ></ion-radio></ion-item>                
               </ion-list>
                 <ion-list  radio-group  *ngSwitchCase="'colacion2'">
-                  <ion-item (click)="showAlert(1)"> <ion-label>Frutas</ion-label> <ion-radio value="hj" checked></ion-radio></ion-item>
-                  <ion-item (click)="showAlert(2)"> <ion-label>Yogurth</ion-label> <ion-radio value="hs" ></ion-radio></ion-item>
-                  <ion-item (click)="showAlert(3)"> <ion-label>Cereal</ion-label> <ion-radio value="cq" ></ion-radio></ion-item>                
+                  <ion-item > <ion-label>Frutas</ion-label> <ion-radio (click)="showAlert(1)" value="hj" checked></ion-radio></ion-item>
+                  <ion-item > <ion-label>Yogurth</ion-label> <ion-radio (click)="showAlert(2)" value="hs" ></ion-radio></ion-item>
+                  <ion-item > <ion-label>Cereal</ion-label> <ion-radio (click)="showAlert(3)" value="cq" ></ion-radio></ion-item>                
               </ion-list>
           </div>
        </ion-card>
