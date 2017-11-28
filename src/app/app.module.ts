@@ -22,6 +22,7 @@ import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { VerMenuDiaPage } from '../pages/ver-menu-dia/ver-menu-dia';
 import { MenuCompletoPage } from '../pages/menu-completo/menu-completo';
 import { PreRegistroPage } from '../pages/pre-registro/pre-registro';
+import { MenuPage } from "../pages/menu/menu";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -56,7 +57,8 @@ import  {PostPreReg} from "../services/postprereg";
     AcercaDePage,
     VerMenuDiaPage,
     MenuCompletoPage,
-    PreRegistroPage
+    PreRegistroPage,
+    MenuPage
   ],
   imports: [
     NgCalendarModule,
@@ -86,7 +88,8 @@ import  {PostPreReg} from "../services/postprereg";
     AcercaDePage,
     VerMenuDiaPage,
     MenuCompletoPage,
-    PreRegistroPage
+    PreRegistroPage,
+    MenuPage
   ],
   providers: [
     StatusBar,

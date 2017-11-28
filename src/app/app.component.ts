@@ -19,8 +19,9 @@ import { SeguimientoPage } from '../pages/seguimiento/seguimiento';
 import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
 
-import { LoginPage } from '../pages/login/login';
 
+import { LoginPage } from '../pages/login/login';
+import { MenuPage } from "../pages/menu/menu";
 
 
 @Component({
@@ -65,9 +66,9 @@ export class MyApp {
   }goToListaDespensa(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ListaDespensaPage);
-  }goToCitas(params){
+  }goToMenu(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(CitasPage);
+    this.navCtrl.setRoot(MenuPage);
   }goToConfirmarCita(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ConfirmarCitaPage);

@@ -1,11 +1,17 @@
 <ion-header>
-    <ion-navbar color="primary">
-
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Cita
+    </ion-title>
+  </ion-navbar>
+</ion-header>
    
-  <ion-content>
-    <ion-item>
+<ion-content padding style="background:url(assets/img/9fY779LOSPuZ871kraTZ_colors-2560x1600-minimalistic-background-75-4250619615.jpg) no-repeat center;background-size:cover;" id="page6">
+  <div class="div2" >  
+  <ion-item>
         <ion-label >Fecha</ion-label>
         <ion-input name="fecha" type="date" (ionChange)="obtenerHoras()"  [(ngModel)]="cita.fecha"></ion-input>
     </ion-item>
@@ -18,6 +24,7 @@
         <button id="citas-button16" ion-button color="positive" block on-click="prepararPost()">
             Confirmar
           </button>
+        </div>
   </ion-content>
 
   <!--

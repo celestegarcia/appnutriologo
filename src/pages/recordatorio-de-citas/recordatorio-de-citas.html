@@ -17,12 +17,14 @@
               <ion-icon name="alarm"></ion-icon>
             </ion-avatar>
         <h2>Martes/31/2017</h2>
-        <p>a las 14:00 horas</p>
+        <p>a las 14:00 horas</p>        
+          <ion-icon name="more" item-right></ion-icon>        
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger">
-          <ion-icon name="trash">Cancelar Cita</ion-icon>
-          Borrar
+          <ion-icon name="trash"></ion-icon>
+          Cancelar Cita 
+          
         </button>
       </ion-item-options>
     </ion-item-sliding>
@@ -33,17 +35,18 @@
           </ion-avatar>
           <h2>Martes/31/2017</h2>
           <p>a las 14:00 horas</p>
+          <ion-icon name="more" item-right></ion-icon>
         </ion-item>
         <ion-item-options side="right">
           <button ion-button color="danger">
-            <ion-icon name="trash">Cancelar Cita</ion-icon>
-            Borrar
+            <ion-icon name="trash"></ion-icon>
+            Cancelar Cita
           </button>
         </ion-item-options>
       </ion-item-sliding>
   </ion-list>
   <ion-fab bottom right>
-    <button ion-fab (click)="irCitas()">
+    <button ion-fab (click)="irCitas()" color="fab">
       <ion-icon name="md-calendar"></ion-icon>
     </button>
   </ion-fab>
