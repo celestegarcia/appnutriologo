@@ -26,13 +26,19 @@
               <p>a las {{n.hora}} horas</p> 
           </ion-col>
           <ion-col col-5>    
-              
+              <div *ngIf='n.status==="Pendiente"'> 
+             <!-- <ion-badge   text-center color="cpendiente" item-start icon-left ><ion-icon name="paper-plane"></ion-icon>{{n.status}}</ion-badge> -->
               <ion-badge   text-center color="cpendiente" item-start icon-left ><ion-icon name="paper-plane"></ion-icon>{{n.status}}</ion-badge>
-              <ion-badge  *ngif="" text-center color="cpendiente" item-start icon-left ><ion-icon name="paper-plane"></ion-icon>pendiente</ion-badge>
-              <ion-badge *ngif="" text-center color="cconfirmada" item-start icon-left ><ion-icon name="checkmark-circle"></ion-icon>confirmada</ion-badge>
-              <ion-badge  *ngif="" text-center color="ccancelada" item-start icon-left ><ion-icon name="ios-close-circle-outline"></ion-icon>cancelada</ion-badge>
-              <ion-badge *ngif="" text-center color="ccompletada" item-start icon-left ><ion-icon name="done-all"></ion-icon>completada</ion-badge>
-              
+            </div>
+            <div *ngIf='n.status==="Confirmada"'> 
+              <ion-badge text-center color="cconfirmada" item-start icon-left ><ion-icon name="checkmark-circle"></ion-icon>{{n.status}}</ion-badge>
+            </div>
+            <div *ngIf='n.status==="Cancelada"'> 
+              <ion-badge   text-center color="ccancelada" item-start icon-left ><ion-icon name="ios-close-circle-outline"></ion-icon>{{n.status}}</ion-badge>
+            </div>  
+            <div *ngIf='n.status==="Completada"'>  
+            <ion-badge  text-center color="ccompletada" item-start icon-left ><ion-icon name="done-all"></ion-icon>{{n.status}}</ion-badge>
+            </div>
               
           </ion-col>
         </ion-row>

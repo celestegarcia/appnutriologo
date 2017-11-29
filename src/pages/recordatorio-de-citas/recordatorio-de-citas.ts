@@ -31,6 +31,12 @@ export class RecordatorioDeCitasPage {
   */
 
   public citas:any =["asd","asd","asd"];
+  public estadoCitas:any = {
+      pendiente : false,
+      confirmada : false,
+      cancelada : false,
+      completada : false
+    }
 
   constructor(public navCtrl: NavController,public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController) 
   {
@@ -48,10 +54,10 @@ export class RecordatorioDeCitasPage {
             resultado.forEach(element => { //Ajustar valor de fecha para que no lleve segundos
               let aux=element.hora.split(":")
               element.hora=aux[0]+":"+aux[1];
-              if(element.status===0) {element.status="Pendiente";} //Procesar status para que lo muestre como texto
-              else if(element.status===1) {element.status="Confirmada";}
-              else if(element.status===2) {element.status="Cancelada";}
-              else if(element.status===3) {element.status="Completada";}
+              if(element.status===0) {this.estadoCitas.pendiente=true; element.status="Pendiente";} //Procesar status para que lo muestre como texto
+              else if(element.status===1) {this.estadoCitas.confirmada=true; element.status="Confirmada";}
+              else if(element.status===2) {this.estadoCitas.cancelada=true; element.status="Cancelada";}
+              else if(element.status===3) {this.estadoCitas.completada=true; element.status="Completada";}
              
             });
             console.log("getCitasByPaciente "+resultado);
