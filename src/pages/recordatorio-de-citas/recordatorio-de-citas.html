@@ -14,22 +14,45 @@
     <div *ngFor="let n of citas">
     <ion-item-sliding >
       <ion-item>
-          <ion-avatar item-start>
-              <ion-icon name="alarm"></ion-icon>
-            </ion-avatar>
-        <h2>{{n.fecha}} ~~  {{n.status}}</h2>
-        <p>a las {{n.hora}} horas</p>        
-          <ion-icon name="more" item-right></ion-icon>        
+        <ion-row>
+          <ion-col icon-left col-1 >
+            <ion-avatar  clear small>
+                    <ion-icon name="alarm"></ion-icon>
+                  </ion-avatar>
+          </ion-col>
+          <ion-col col-6>
+              
+             <h2>{{n.fecha}}</h2>
+              <p>a las {{n.hora}} horas</p> 
+          </ion-col>
+          <ion-col col-5>    
+              
+              <ion-badge   text-center color="cpendiente" item-start icon-left ><ion-icon name="paper-plane"></ion-icon>{{n.status}}</ion-badge>
+              <ion-badge  *ngif="" text-center color="cpendiente" item-start icon-left ><ion-icon name="paper-plane"></ion-icon>pendiente</ion-badge>
+              <ion-badge *ngif="" text-center color="cconfirmada" item-start icon-left ><ion-icon name="checkmark-circle"></ion-icon>confirmada</ion-badge>
+              <ion-badge  *ngif="" text-center color="ccancelada" item-start icon-left ><ion-icon name="ios-close-circle-outline"></ion-icon>cancelada</ion-badge>
+              <ion-badge *ngif="" text-center color="ccompletada" item-start icon-left ><ion-icon name="done-all"></ion-icon>completada</ion-badge>
+              
+              
+          </ion-col>
+        </ion-row>
+
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger">
           <ion-icon name="trash"></ion-icon>
-          Cancelar Cita 
+          Cancelar <br>Cita 
           
         </button>
       </ion-item-options>
     </ion-item-sliding>
   </div>
+  <ion-badge  text-center color="cpendiente" item-start icon-left ><ion-icon name="paper-plane"></ion-icon>pendiente</ion-badge>
+  <ion-badge  text-center color="cconfirmada" item-start icon-left ><ion-icon name="checkmark-circle"></ion-icon>confirmada</ion-badge>
+  <ion-badge  text-center color="ccancelada" item-start icon-left ><ion-icon name="ios-close-circle-outline"></ion-icon>cancelada</ion-badge>
+  <ion-badge  text-center color="ccompletada" item-start icon-left ><ion-icon name="done-all"></ion-icon>completada</ion-badge>
+  
+  
   </ion-list>
   <ion-fab bottom right>
     <button ion-fab (click)="irCitas()" color="fab">
