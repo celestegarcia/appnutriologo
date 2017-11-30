@@ -13,7 +13,7 @@
   <ion-list id="configuraciones-list14">
     <ion-item color="none" id="configuraciones-list-item35">
       <ion-thumbnail item-left>
-        <img src="assets/img/YjWgsyTcTty2H46oRK5G_yeradios.jpg" />
+        <img [src]="base64Image" *ngIf="base64Image">
       </ion-thumbnail>
       <h2>
         Cambiar foto
@@ -40,14 +40,14 @@
     Aceptar
   </button>
   <ion-fab bottom right>
-    <button ion-fab (click)="takePic()">
+    <button ion-fab >
       <ion-icon name="camera"></ion-icon>
     </button>
   </ion-fab>
   <ion-fab bottom left>
-      <button ion-fab color="danger" (click)="openGallery()">
+      <button ion-fab color="danger" >
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-fab>
-    <img [src]="base64Image" *ngIf="base64Image">
+    
 </ion-content>
