@@ -40,12 +40,12 @@
     Aceptar
   </button>
   <ion-fab bottom right>
-    <button ion-fab >
+    <button ion-fab (click)="takePic()">
       <ion-icon name="camera"></ion-icon>
     </button>
   </ion-fab>
   <ion-fab bottom left>
-      <button ion-fab color="danger" >
+      <button ion-fab color="danger" (click)="openGallery()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-fab>
