@@ -29,6 +29,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { Camera } from '@ionic-native/camera';
+import { CallNumber } from '@ionic-native/call-number';
+
 
 //Para http
 import { HttpModule } from "@angular/http";
@@ -89,6 +91,7 @@ import  {PostPreReg} from "../services/postprereg";
     VerMenuDiaPage,
     MenuCompletoPage,
     PreRegistroPage,
+    
     MenuPage
   ],
   providers: [
@@ -96,6 +99,7 @@ import  {PostPreReg} from "../services/postprereg";
     SplashScreen,
     PostPreReg,
     Camera,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
