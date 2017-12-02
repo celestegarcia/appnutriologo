@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { InicioPage } from '../inicio/inicio';
 import { OlvideContrasenaPage } from '../olvide-contrasena/olvide-contrasena';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 @Component({

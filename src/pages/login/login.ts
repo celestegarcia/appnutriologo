@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController,   Tabs } from 'ionic-angular';
-import { InicioPage } from '../inicio/inicio';
 import { OlvideContrasenaPage } from '../olvide-contrasena/olvide-contrasena';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { PreRegistroPage } from '../pre-registro/pre-registro';

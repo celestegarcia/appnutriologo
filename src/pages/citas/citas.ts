@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { ConfirmarCitaPage } from '../confirmar-cita/confirmar-cita';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import * as moment from 'moment';
-import { InicioPage } from '../inicio/inicio';
 
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 //http
@@ -138,10 +136,7 @@ export class CitasPage {
         alert.present();
       });
   }
-  goToConfirmarCita(params){
-    if (!params) params = {};
-    this.navCtrl.push(ConfirmarCitaPage);
-  }goToCitas(params){
+ goToCitas(params){
     if (!params) params = {};
     this.navCtrl.push(TabsControllerPage, {index:2}); 
   }goToInicio(params){
