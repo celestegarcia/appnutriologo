@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { VerMenuDiaPage } from '../ver-menu-dia/ver-menu-dia';
-import { MenuCompletoPage } from '../menu-completo/menu-completo';
 import { DespensaPage } from '../despensa/despensa';
 import { ListaDespensaPage } from '../lista-despensa/lista-despensa';
 import { InicioPage } from '../inicio/inicio';
@@ -15,13 +13,8 @@ export class EscogerMenuPage {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
   }
-  goToVerMenuDia(params){
-    if (!params) params = {};
-    this.navCtrl.push(VerMenuDiaPage);
-  }goToMenuCompleto(params){
-    if (!params) params = {};
-    this.navCtrl.push(MenuCompletoPage);
-  }goToDespensa(params){
+
+  goToDespensa(params){
     if (!params) params = {};
     this.navCtrl.push(DespensaPage);
   }goToEscogerMenu(params){

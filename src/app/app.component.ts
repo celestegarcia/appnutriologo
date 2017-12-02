@@ -2,17 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, NavController, Tabs } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { InicioPage } from '../pages/inicio/inicio';
 import { CerrarSesionPage } from '../pages/cerrar-sesion/cerrar-sesion';
 import { OlvideContrasenaPage } from '../pages/olvide-contrasena/olvide-contrasena';
 import { DespensaPage } from '../pages/despensa/despensa';
 import { EscogerMenuPage } from '../pages/escoger-menu/escoger-menu';
-import { VerMenuDiaPage } from '../pages/ver-menu-dia/ver-menu-dia';
-import { MenuCompletoPage } from '../pages/menu-completo/menu-completo';
 import { ListaDespensaPage } from '../pages/lista-despensa/lista-despensa';
 import { CitasPage } from '../pages/citas/citas';
-import { ConfirmarCitaPage } from '../pages/confirmar-cita/confirmar-cita';
 import { ConfiguracionesPage } from '../pages/configuraciones/configuraciones';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { SeguimientoPage } from '../pages/seguimiento/seguimiento';
@@ -57,21 +53,13 @@ export class MyApp {
   }goToEscogerMenu(params){
     if (!params) params = {};
     this.navCtrl.setRoot(EscogerMenuPage);
-  }goToVerMenuDia(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(VerMenuDiaPage);
-  }goToMenuCompleto(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(MenuCompletoPage);
+  
   }goToListaDespensa(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ListaDespensaPage);
   }goToMenu(params){
     if (!params) params = {};
     this.navCtrl.setRoot(MenuPage);
-  }goToConfirmarCita(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(ConfirmarCitaPage);
   }goToConfiguraciones(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ConfiguracionesPage);
