@@ -16,169 +16,60 @@
           <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
         </div>
         <!--Desayuno---------------------- -->
+        
         <ion-slides>
+            <div *ngFor="let ndesa of desayuno">
           <ion-slide>
             <ion-item-divider color="light" id="inicio-list-item-divider4">
-              Desayuno Menu 1 
+              Desayuno {{ndesa.menu}} 
               <ion-icon name="arrow-dropright-circle"></ion-icon>
             </ion-item-divider>
-            <div id="inicio-markdown17" class="show-list-numbers-and-dots">
+            <div id="inicio-markdown17" class="show-list-numbers-and-dots" >
+              <div *ngFor="let comida of ndesa.alimentos">
               <p style="margin-top:0px;color:#ffffff;">
-                2 tazas de clara de huevo San Juan®
+                  {{comida.um}} de {{comida.descripcion}}
               </p>
-              <p style="color:#ffffff;">
-                2 piezas de salchicha de pavo
-              </p>
-              <p style="color:#ffffff;">
-                1/2 taza de leche light
-              </p>
+              </div>
             </div>
           </ion-slide>
-          <ion-slide>
-            <ion-item-divider color="light" id="inicio-list-item-divider5">
-                    <ion-icon name="arrow-dropleft-circle"></ion-icon>
-                Desayuno Menu 2
-              <ion-icon name="arrow-dropright-circle"></ion-icon>
-            </ion-item-divider>
-            <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-              <p style="margin-top:0px;color:#ffffff;">
-                2 tazas de clara de huevo San Juan®
-              </p>
-              <p style="color:#ffffff;">
-                2 piezas de salchicha de pavo
-              </p>
-              <p style="color:#ffffff;">
-                1/2 taza de leche light
-              </p>
-            </div>
-          </ion-slide>
-          <ion-slide>
-            <ion-item-divider color="light" id="inicio-list-item-divider5">
-                    <ion-icon name="arrow-dropleft-circle"></ion-icon>
-                Desayuno Menu 3
-            </ion-item-divider>
-            <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-              <p style="margin-top:0px;color:#ffffff;">
-                2 tazas de clara de huevo San Juan®
-              </p>
-              <p style="color:#ffffff;">
-                2 piezas de salchicha de pavo
-              </p>
-              <p style="color:#ffffff;">
-                1/2 taza de leche light
-              </p>
-            </div>
-          </ion-slide>
+        </div>
         </ion-slides>
+        
         <!--Comida---------------------- -->
         <ion-slides>
+            <div *ngFor="let ncomi of comida">
                 <ion-slide>
                   <ion-item-divider color="light" id="inicio-list-item-divider4">
-                    Comida Menu 1 
+                    Comida: {{ncomi.menu}}
                     <ion-icon name="arrow-dropright-circle"></ion-icon>
                   </ion-item-divider>
                   <div id="inicio-markdown17" class="show-list-numbers-and-dots">
-                    <p style="margin-top:0px;color:#ffffff;">
-                      2 tazas de clara de huevo San Juan®
-                    </p>
-                    <p style="color:#ffffff;">
-                      2 piezas de salchicha de pavo
-                    </p>
-                    <p style="color:#ffffff;">
-                      1/2 taza de leche light
-                    </p>
+                      <div *ngFor="let comida of ncomi.alimentos">
+                          <p style="margin-top:0px;color:#ffffff;">
+                              {{comida.um}} de {{comida.descripcion}}
+                          </p>
+                      </div>
                   </div>
                 </ion-slide>
-                <ion-slide>
-                  <ion-item-divider color="light" id="inicio-list-item-divider5">
-                          <ion-icon name="arrow-dropleft-circle"></ion-icon>
-                          Comida Menu 2
-                    <ion-icon name="arrow-dropright-circle"></ion-icon>
-                  </ion-item-divider>
-                  <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-                    <p style="margin-top:0px;color:#ffffff;">
-                      2 tazas de clara de huevo San Juan®
-                    </p>
-                    <p style="color:#ffffff;">
-                      2 piezas de salchicha de pavo
-                    </p>
-                    <p style="color:#ffffff;">
-                      1/2 taza de leche light
-                    </p>
-                  </div>
-                </ion-slide>
-                <ion-slide>
-                  <ion-item-divider color="light" id="inicio-list-item-divider5">
-                          <ion-icon name="arrow-dropleft-circle"></ion-icon>
-                          Comida Menu 3
-                  </ion-item-divider>
-                  <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-                    <p style="margin-top:0px;color:#ffffff;">
-                      2 tazas de clara de huevo San Juan®
-                    </p>
-                    <p style="color:#ffffff;">
-                      2 piezas de salchicha de pavo
-                    </p>
-                    <p style="color:#ffffff;">
-                      1/2 taza de leche light
-                    </p>
-                  </div>
-                </ion-slide>
+            </div>
               </ion-slides>
       
               <ion-slides>
+                  <div *ngFor="let ncena of cena">
                     <ion-slide>
                       <ion-item-divider color="light" id="inicio-list-item-divider4">
-                        Cena Menu 1 
+                        Cena: {{ncena.menu}}
                         <ion-icon name="arrow-dropright-circle"></ion-icon>
                       </ion-item-divider>
                       <div id="inicio-markdown17" class="show-list-numbers-and-dots">
+                        <div *ngFor="let comida of ncena.alimentos">
                         <p style="margin-top:0px;color:#ffffff;">
-                          2 tazas de clara de huevo San Juan®
+                            {{comida.um}} de {{comida.descripcion}}
                         </p>
-                        <p style="color:#ffffff;">
-                          2 piezas de salchicha de pavo
-                        </p>
-                        <p style="color:#ffffff;">
-                          1/2 taza de leche light
-                        </p>
+                        </div>
                       </div>
                     </ion-slide>
-                    <ion-slide>
-                      <ion-item-divider color="light" id="inicio-list-item-divider5">
-                              <ion-icon name="arrow-dropleft-circle"></ion-icon>
-                         Cena Menu 2
-                        <ion-icon name="arrow-dropright-circle"></ion-icon>
-                      </ion-item-divider>
-                      <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-                        <p style="margin-top:0px;color:#ffffff;">
-                          2 tazas de clara de huevo San Juan®
-                        </p>
-                        <p style="color:#ffffff;">
-                          2 piezas de salchicha de pavo
-                        </p>
-                        <p style="color:#ffffff;">
-                          1/2 taza de leche light
-                        </p>
-                      </div>
-                    </ion-slide>
-                    <ion-slide>
-                      <ion-item-divider color="light" id="inicio-list-item-divider5">
-                              <ion-icon name="arrow-dropleft-circle"></ion-icon>
-                          Cena Menu 3
-                      </ion-item-divider>
-                      <div id="inicio-markdown18" class="show-list-numbers-and-dots">
-                        <p style="margin-top:0px;color:#ffffff;">
-                          2 tazas de clara de huevo San Juan®
-                        </p>
-                        <p style="color:#ffffff;">
-                          2 piezas de salchicha de pavo
-                        </p>
-                        <p style="color:#ffffff;">
-                          1/2 taza de leche light
-                        </p>
-                      </div>
-                    </ion-slide>
+                  </div>
                   </ion-slides>
  
       </ion-list>
