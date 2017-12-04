@@ -17,6 +17,7 @@ import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
 
 import { LoginPage } from '../pages/login/login';
+import { AlbumPage } from '../pages/album/album';
 import { MenuPage } from "../pages/menu/menu";
 
 
@@ -69,5 +70,8 @@ export class MyApp {
   }goToSeguimiento(params){
     if (!params) params = {};
     this.navCtrl.setRoot(SeguimientoPage);
+  }goToAlbum(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(AlbumPage);
   }
 }

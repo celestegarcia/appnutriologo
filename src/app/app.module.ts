@@ -19,6 +19,7 @@ import { ConfiguracionesPage } from '../pages/configuraciones/configuraciones';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { PreRegistroPage } from '../pages/pre-registro/pre-registro';
 import { MenuPage } from "../pages/menu/menu";
+import { AlbumPage } from "../pages/album/album";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,6 +27,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { Camera } from '@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
+import { AuthService } from '../providers/auth-service/auth-service'
 
 
 //Para http
@@ -53,7 +55,8 @@ import  {PostPreReg} from "../services/postprereg";
     ConfiguracionesPage,
     AcercaDePage,
     PreRegistroPage,
-    MenuPage
+    MenuPage,
+    AlbumPage
   ],
   imports: [
     NgCalendarModule,
@@ -80,7 +83,8 @@ import  {PostPreReg} from "../services/postprereg";
     ConfiguracionesPage,
     AcercaDePage,
     PreRegistroPage,
-    MenuPage
+    MenuPage,
+    AlbumPage
   ],
   providers: [
     StatusBar,
@@ -88,7 +92,8 @@ import  {PostPreReg} from "../services/postprereg";
     PostPreReg,
     Camera,
     CallNumber,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService
   ]
 })
 export class AppModule {}

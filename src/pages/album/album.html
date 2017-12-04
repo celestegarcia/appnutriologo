@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar color="navbar">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Album de avances
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+     
+  <ion-content padding style="background:url(assets/img/9fY779LOSPuZ871kraTZ_colors-2560x1600-minimalistic-background-75-4250619615.jpg) no-repeat center;background-size:cover;" >
+    <button ion-button full  (click)="takePhoto()">
+      <ion-icon name="camera"></ion-icon>&nbsp;Capturar foto
+      </button>
+    
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let photo of photos; let id = index">
+            <ion-card class="block">
+              <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+              <img [src]="photo" *ngIf="photo" />
+            </ion-card>
+    </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
