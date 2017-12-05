@@ -86,4 +86,5 @@
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />
     <plugin name="mx.ferreyra.callnumber" spec="0.0.2" />
     <plugin name="call-number" spec="^1.0.1" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
 </widget>

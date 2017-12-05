@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, NavController, Tabs } from 'ionic-angular';
+import { Platform, Nav, NavController, Tabs, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InicioPage } from '../pages/inicio/inicio';
@@ -19,7 +19,7 @@ import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 import { LoginPage } from '../pages/login/login';
 import { AlbumPage } from '../pages/album/album';
 import { MenuPage } from "../pages/menu/menu";
-
+import { OneSignal } from '@ionic-native/onesignal';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,12 +28,14 @@ export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
     rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private oneSignal: OneSignal,
+    private alertCtrl: AlertController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.handlerNotifications();
     });
   }
   goToInicio(params){
@@ -73,5 +75,20 @@ export class MyApp {
   }goToAlbum(params){
     if (!params) params = {};
     this.navCtrl.setRoot(AlbumPage);
+  }
+  private handlerNotifications(){
+    this.oneSignal.startInit('8a2efedc-a7b7-482a-91a5-1526ec32bcd1', '793664578352');
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    this.oneSignal.handleNotificationOpened()
+    .subscribe(jsonData => {
+      let alert = this.alertCtrl.create({
+        title: jsonData.notification.payload.title,
+        subTitle: jsonData.notification.payload.body,
+        buttons: ['OK']
+      });
+      alert.present();
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    });
+    this.oneSignal.endInit();
   }
 }

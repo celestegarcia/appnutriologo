@@ -29,7 +29,7 @@ import { Camera } from '@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
 import { AuthService } from '../providers/auth-service/auth-service'
 
-
+import { OneSignal } from '@ionic-native/onesignal';
 //Para http
 import { HttpModule } from "@angular/http";
 import  {PostPreReg} from "../services/postprereg";
@@ -92,6 +92,7 @@ import  {PostPreReg} from "../services/postprereg";
     PostPreReg,
     Camera,
     CallNumber,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService
   ]
