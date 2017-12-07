@@ -77,7 +77,7 @@ export class MyApp {
     this.navCtrl.setRoot(AlbumPage);
   }
   private handlerNotifications(){
-    this.oneSignal.startInit('8a2efedc-a7b7-482a-91a5-1526ec32bcd1', '793664578352');
+    this.oneSignal.startInit('f68dcba8-7018-41d4-a462-1a4f4dacda70', '445817069251');
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
     this.oneSignal.handleNotificationOpened()
     .subscribe(jsonData => {
