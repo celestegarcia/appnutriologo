@@ -20,23 +20,20 @@
       </h2>
     </ion-item>
   </ion-list>
-  <form id="configuraciones-form12">
-    <ion-item id="configuraciones-textarea5">
+      <ion-item id="configuraciones-textarea5">
       <ion-label>
         Direccion:
       </ion-label>
-      <ion-textarea placeholder="Dr.Freyman 220"></ion-textarea>
+      <ion-textarea placeholder="Dr.Freyman 220" [ngModelOptions]="{standalone: true}" [(ngModel)]="direccion"></ion-textarea>
     </ion-item>
-  </form>
-  <form id="configuraciones-form14">
+  
     <ion-item id="configuraciones-textarea6">
       <ion-label>
         Telefono:
       </ion-label>
-      <ion-textarea placeholder="311-157-15-39"></ion-textarea>
+      <ion-textarea placeholder="311-157-15-39" [ngModelOptions]="{standalone: true}" [(ngModel)]="telefono"></ion-textarea>
     </ion-item>
-  </form>
-  <button id="configuraciones-button20" ion-button color="positive" block on-click="goToInicio()">
+  <button id="configuraciones-button20"  block on-click="goToInicio()">
     Aceptar
   </button>
   <ion-fab bottom right>

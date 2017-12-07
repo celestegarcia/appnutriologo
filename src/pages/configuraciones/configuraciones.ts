@@ -12,7 +12,10 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class ConfiguracionesPage {
 public base64Image: string;
-  constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http ) {
+public direccion:string;
+public telefono:string;
+  constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http ) 
+  {
   
   }
   goToInicio(params){
@@ -53,6 +56,8 @@ public base64Image: string;
         this.http.get("http://104.131.121.55/getPicture?id="+id).subscribe(res=>{
             let result = res.json().result;
             this.base64Image = result.foto;
+            this.direccion = result.direccion;
+            this.telefono = result.telefono;
             //console.log(this.data);
             //this.enviarFormulario(res.json());
             //return this.data;
@@ -63,7 +68,10 @@ public base64Image: string;
 
    enviarImg(){
      let id = localStorage.getItem("paciente_id");
-     let body = {id:id,foto:this.base64Image};
+     let body = {id:id,
+                foto:this.base64Image,
+                telefono:this.telefono,
+                direccion:this.direccion};
      let headers: any = new Headers({'Content-Type': 'multipart/form-data'});
      headers = new Headers({ 'Content-Type': 'application/json' });
      //headers.append('Content-Type', 'application/x-www-form-urlencoded');

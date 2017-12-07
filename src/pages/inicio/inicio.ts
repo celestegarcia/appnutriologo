@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
+import { ModalController, AlertController } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
 @Component({
   selector: 'page-inicio',
   templateUrl: 'inicio.html'
@@ -17,8 +20,9 @@ export class InicioPage {
     email:"",
     password:""
   }
+  public base64Image: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController) {
     let tmpUsr: any ={
       email:localStorage.getItem("email"),
       ape_materno: localStorage.getItem("ape_materno"),
@@ -37,10 +41,26 @@ export class InicioPage {
        
   }
 
+  obtenerImg(){
+    let id = localStorage.getItem("paciente_id");
+      this.http.get("http://104.131.121.55/getPicture?id="+id).subscribe(res=>{
+          let result = res.json().result;
+          this.base64Image = result.foto;
+          //console.log(this.data);
+          //this.enviarFormulario(res.json());
+          //return this.data;
+      },error=> {
+        console.log(error);  
+      });
+  }
+
   ionViewDidLoad() {
-    
+
+    this.obtenerImg();
+
+
            this.barChart = new Chart(this.barCanvas.nativeElement, {
-    
+
                type: 'bar',
                data: {
                    labels: ["Sesion Anterior", "Sesion Actual"],
@@ -189,5 +209,7 @@ export class InicioPage {
                    });
     
        }
+
+
   
 }
