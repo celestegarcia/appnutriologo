@@ -13,7 +13,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class ConfiguracionesPage {
 public base64Image: string;
   constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http ) {
-  this.obtenerImg();
+  
   }
   goToInicio(params){
     if (!params) params = {};
@@ -47,7 +47,7 @@ public base64Image: string;
          console.log(err);
        });
        }
-
+ 
     obtenerImg(){
       let id = localStorage.getItem("paciente_id");
         this.http.get("http://104.131.121.55/getPicture?id="+id).subscribe(res=>{
@@ -94,4 +94,9 @@ public base64Image: string;
     //this.navCtrl.push(LoginPage);
 
   }
+
+  ionViewDidLoad() {
+    this.obtenerImg();
+  }
+
 }
