@@ -17,7 +17,7 @@
         </div>
         <!--Desayuno---------------------- -->
         
-        <ion-slides>
+        <ion-slides >
             <div *ngFor="let ndesa of desayuno">
           <ion-slide>
             <ion-item-divider color="light" id="inicio-list-item-divider4">
@@ -27,12 +27,12 @@
             <div id="inicio-markdown17" class="show-list-numbers-and-dots" >
               <div *ngFor="let comida of ndesa.alimentos">
               <p style="margin-top:0px;color:#ffffff;">
-                  {{comida.um}} de {{comida.descripcion}}
+                {{comida.porciones}} {{comida.um}}  de {{comida.descripcion}}
               </p>
               </div>
             </div>
           </ion-slide>
-        </div>
+        </div> 
         </ion-slides>
         
         <!--Comida---------------------- -->
@@ -46,7 +46,7 @@
                   <div id="inicio-markdown17" class="show-list-numbers-and-dots">
                       <div *ngFor="let comida of ncomi.alimentos">
                           <p style="margin-top:0px;color:#ffffff;">
-                              {{comida.um}} de {{comida.descripcion}}
+                            {{comida.porciones}} {{comida.um}}  de {{comida.descripcion}}
                           </p>
                       </div>
                   </div>
@@ -64,7 +64,7 @@
                       <div id="inicio-markdown17" class="show-list-numbers-and-dots">
                         <div *ngFor="let comida of ncena.alimentos">
                         <p style="margin-top:0px;color:#ffffff;">
-                            {{comida.um}} de {{comida.descripcion}}
+                            {{comida.porciones}} {{comida.um}} de {{comida.descripcion}}
                         </p>
                         </div>
                       </div>
