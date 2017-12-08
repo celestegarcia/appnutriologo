@@ -33,22 +33,22 @@
       </ion-label>
       <ion-textarea placeholder="311-157-15-39" [ngModelOptions]="{standalone: true}" [(ngModel)]="telefono"></ion-textarea>
     </ion-item>
-  <button id="configuraciones-button20"  block on-click="goToInicio()">
+  <button  ion-button id="configuraciones-button20"  block (click)="enviarImg()">
     Aceptar
   </button>
   
-  <ion-fab bottom right>
-    <button ion-fab ><ion-icon name="camera"></ion-icon></button>
+  <ion-fab bottom right >
+    <button ion-fab color="danger"><ion-icon name="camera"></ion-icon></button>
     <ion-fab-list side="top">
       <button ion-fab (click)="takePic()" color="secondary">
         <ion-icon name="camera"></ion-icon>
       </button>
-      <button ion-fab color="danger" (click)="openGallery()">
+      <button ion-fab color="cconfirmada" (click)="openGallery()">
         <ion-icon name="md-images"></ion-icon>
       </button>
     </ion-fab-list>
   </ion-fab>
 
-    <button ion-fab  (click)="enviarImg()">Enviar</button>
+    <!-- <button ion-fab  (click)="enviarImg()">Enviar</button>-->
     
 </ion-content>
