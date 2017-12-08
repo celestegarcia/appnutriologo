@@ -50,22 +50,15 @@ export class MensajesPage {
   }
   borrarSitio(id) {
     let alert = this.alertCtrl.create({
-      title: 'Confirmar borrado',
-      message: '¿Estás seguro de que deseas eliminar esta notificación?',
+      title: 'Error',
+      message: 'Lo sentimosno tienes permiso para borrar esta notificación',
       buttons: [
         {
-          text: 'No',
+          text: 'Cancelar',
           role: 'cancel',
           handler: () => {
             // Ha respondido que no así que no hacemos nada
           }
-        },
-        {
-          text: 'Si',
-          handler: () => {
-               // AquÍ borramos el sitio en la base de datos
- 
-           }
         }
       ]
     });
