@@ -98,7 +98,7 @@ export class LoginPage {
 
   },error=> {
     let alert = this.alertCtrl.create({
-      title: 'Error al Registrar',
+      title: 'Ocurrio un error al ingresar',
       subTitle: 'Hubo un error al procesar su solicitud, verifique su información, o intentelo más tarde.',
       buttons: ['Aceptar']
     });
