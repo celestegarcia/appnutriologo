@@ -14,6 +14,8 @@ export class ConfiguracionesPage {
 public base64Image: string;
 public direccion:string;
 public telefono:string;
+public pwd1:string;
+public pwd2:string;
   constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http ) 
   {
   
@@ -56,7 +58,7 @@ public telefono:string;
         this.http.get("http://104.131.121.55/getPicture?id="+id).subscribe(res=>{
             let result = res.json().result;
             this.base64Image = result.foto;
-            this.direccion = result.direccion;
+            this.direccion = result.domicilio;
             this.telefono = result.telefono;
             //console.log(this.data);
             //this.enviarFormulario(res.json());
@@ -71,27 +73,37 @@ public telefono:string;
      let body = {id:id,
                 foto:this.base64Image,
                 telefono:this.telefono,
-                direccion:this.direccion};
-     let headers: any = new Headers({'Content-Type': 'multipart/form-data'});
-     headers = new Headers({ 'Content-Type': 'application/json' });
-     //headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.http
-    .post('http://104.131.121.55/setPicture',
-           body, { headers: headers }).toPromise()
-    .then(data => {
-      console.log((data as any)._body);
-      this.confirmarPost((data as any)._body);
-    }).catch(error => {
-      console.log(error);
+                domicilio:this.direccion,
+                contraseña1:this.pwd1,
+                contraseña2:this.pwd2};
+    if(body.contraseña1==body.contraseña2){
+      let headers: any = new Headers({'Content-Type': 'multipart/form-data'});
+      headers = new Headers({ 'Content-Type': 'application/json' });
+      //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        this.http
+        .post('http://104.131.121.55/setPicture',
+              body, { headers: headers }).toPromise()
+        .then(data => {
+          console.log((data as any)._body);
+          this.confirmarPost((data as any)._body);
+        }).catch(error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error al Subir',
+            subTitle: 'Hubo un error al Actualizar el registro',
+            buttons: ['Aceptar']
+          });
+          alert.present();
+        });
+    } else{
       let alert = this.alertCtrl.create({
-        title: 'Error al Subir',
-        subTitle: 'Hubo un error al subir imagen',
+        title: 'Error',
+        subTitle: 'Las contraseñas no coinciden',
         buttons: ['Aceptar']
       });
       alert.present();
-    });
-   }
-
+    }
+  }
    confirmarPost(respuesta){
     let alert = this.alertCtrl.create({
       title: 'Registro exitoso',
