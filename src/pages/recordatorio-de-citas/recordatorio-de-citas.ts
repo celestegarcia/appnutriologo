@@ -14,23 +14,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   templateUrl: 'recordatorio-de-citas.html'
 })
 export class RecordatorioDeCitasPage {
-  /*
-{   "status": "OK",
-    "code": 200,
-    "result": [
-        {
-            "cita_id": 2,
-            "fecha": "2017-11-29",
-            "hora": "11:00:00",
-            "status": 0,
-            "motivo": null,
-            "paciente_id": 5,
-            "nombre": "Celeste",
-            "ape_paterno": "Garcia",
-            "ape_materno": "Diaz"    } ] }
-  */
-
+ 
   public citas:any =["asd","asd","asd"];
+  public vacio:boolean= true;
   public estadoCitas:any = {
       pendiente : false,
       confirmada : false,
@@ -40,7 +26,7 @@ export class RecordatorioDeCitasPage {
 
   constructor(public navCtrl: NavController,public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController) 
   {
-      this.obtenerCitas();
+      this.obtenerCitas();      
   }
 
   obtenerCitas(){
@@ -62,6 +48,7 @@ export class RecordatorioDeCitasPage {
             });
             console.log("getCitasByPaciente "+resultado);
             this.citas=resultado;
+            this.vacio = false;
         },error=> {
           let alert = this.alertCtrl.create({
             title: 'Error al Obtener Citas',

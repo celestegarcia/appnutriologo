@@ -16,6 +16,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class MensajesPage {
   public mensajes: any = ["asd", "asd", "asd"];
+  public vacio:boolean= true;
   constructor(public navCtrl: NavController, public http: Http, private modalCtrl: ModalController, private alertCtrl: AlertController) {
     this.obtenerNotificaciones();
   }
@@ -40,11 +41,12 @@ export class MensajesPage {
 
       }
       this.mensajes = resultado;
+      this.vacio=false;
     }, error => {
       let alert = this.alertCtrl.create({
         title: 'Error al Obtener las notificaciones',
         subTitle: 'Hubo un error al obtener notificaciones, intentelo más tarde.',
-        buttons: ['Regresar']
+        buttons: ['OK']
       });
       alert.present();
     });
@@ -67,4 +69,15 @@ export class MensajesPage {
 
     alert.present();
   }
+
+  verCompleto(asunto:string, mensaje:string){
+    let alert = this.alertCtrl.create({
+      title: asunto,
+      message: mensaje,
+      buttons: ['OK']
+      
+    });
+    alert.present();
+  }
+ 
 }
