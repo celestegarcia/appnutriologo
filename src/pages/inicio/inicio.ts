@@ -208,26 +208,29 @@ export class InicioPage {
  
         });
 
-
         this.barChartG = new Chart(this.barCanvasGrasa.nativeElement, {
             type: 'bar',
             data: {
-                label: '% Grasa',
-                data: this.percentgrasa,
-                backgroundColor: [
-                    
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                    
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 159, 64, 1)'
-
-                ],
-                borderWidth: 1
+                labels: this.fecha,//["Sesion Anterior", "Sesion Actual"],
+                datasets: [ {
+                    label: '% Muscular',
+                    data: this.percentgrasa,
+                    backgroundColor: [
+                        
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                    ],
+                    borderColor: [
+                        
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 1)'
+  
+                    ],
+                    borderWidth: 1
+                }
+               ]
             },
             options: {
                 scales: {
@@ -242,8 +245,7 @@ export class InicioPage {
  
         });
 
-
-
+       
            this.lineChart = new Chart(this.lineCanvas.nativeElement, {
             
                        type: 'line',
