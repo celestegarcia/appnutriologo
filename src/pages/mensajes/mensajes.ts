@@ -46,7 +46,7 @@ export class MensajesPage {
       let alert = this.alertCtrl.create({
         title: 'Error al Obtener las notificaciones',
         subTitle: 'Hubo un error al obtener notificaciones, intentelo más tarde.',
-        buttons: ['Regresar']
+        buttons: ['OK']
       });
       alert.present();
     });
@@ -73,7 +73,9 @@ export class MensajesPage {
   verCompleto(asunto:string, mensaje:string){
     let alert = this.alertCtrl.create({
       title: asunto,
-      message: mensaje      
+      message: mensaje,
+      buttons: ['OK']
+      
     });
     alert.present();
   }

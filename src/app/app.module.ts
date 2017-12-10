@@ -20,6 +20,7 @@ import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { PreRegistroPage } from '../pages/pre-registro/pre-registro';
 import { MenuPage } from "../pages/menu/menu";
 import { AlbumPage } from "../pages/album/album";
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -62,6 +63,7 @@ import  {PostPreReg} from "../services/postprereg";
     NgCalendarModule,
     BrowserModule,
     HttpModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'top'})
   ],
   bootstrap: [IonicApp],

@@ -4,6 +4,8 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 import { AuthService } from "../../providers/auth-service/auth-service";
 import { Http, Headers, RequestOptions } from '@angular/http';
 
+
+
 // import {
 //   FileTransfer,
 //   FileUploadOptions,
