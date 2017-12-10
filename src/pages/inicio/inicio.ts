@@ -11,9 +11,14 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class InicioPage {
   @ViewChild('barCanvas') barCanvas;
+  @ViewChild('barCanvasImc') barCanvasImc;
+  @ViewChild('barCanvasGrasa') barCanvasGrasa;  
   @ViewChild('lineCanvas') lineCanvas;
 
   barChart: any;
+  barChartI: any;
+  barChartG: any;
+
   lineChart: any;
 
   public user:any = {
@@ -21,7 +26,13 @@ export class InicioPage {
     password:""
   }
   public base64Image: string;
+  public datosTabla: string;
+  public pesoActual: any = [];
+  public imc: any = [];
+  public percentgrasa: any = [];
+  public fecha: any = [];
 
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController) {
     let tmpUsr: any ={
       email:localStorage.getItem("email"),
@@ -54,19 +65,50 @@ export class InicioPage {
       });
   }
 
+  obtenerDatosTabla(){
+    let id = localStorage.getItem("paciente_id");
+      this.http.get("http://104.131.121.55/getResumenCitas?paciente_id="+id).subscribe(res=>{
+          let result = res.json().result;
+          this.datosTabla = result;
+          result.forEach(element => {
+            if(element.antropometria != null)  
+            {
+            this.fecha.push(element.fecha );
+              console.log(element.antropometria);    
+              var datos = JSON.parse(element.antropometria);
+              console.log(datos);    
+              this.pesoActual.push(datos.peso_actual );
+              this.imc.push(datos.imc );
+              this.percentgrasa.push(datos.percent_grasa );
+            }
+          });
+          console.log(this.fecha);
+          console.log(this.pesoActual);
+          console.log(this.imc);
+          console.log(this.percentgrasa);
+          this.barChart.update();
+          this.barChartI.update();
+          this.barChartG.update();
+          this.lineChart.update();
+          //this.enviarFormulario(res.json());
+          //return this.data;
+      },error=> {
+        console.log("error get resumen citas");  
+      });
+  }
+
   ionViewDidLoad() {
 
     this.obtenerImg();
-
+    
 
            this.barChart = new Chart(this.barCanvas.nativeElement, {
-
                type: 'bar',
                data: {
-                   labels: ["Sesion Anterior", "Sesion Actual"],
+                   labels: this.fecha,//["Sesion Anterior", "Sesion Actual"],
                    datasets: [{
                        label: 'Peso',
-                       data: [12, 19],
+                       data: this.pesoActual,//[12, 19],
                        backgroundColor: [
                            
                            'rgba(54, 162, 235, 0.2)',
@@ -82,8 +124,8 @@ export class InicioPage {
                            
                        ],
                        borderWidth: 1
-                   },
-                   {
+                   }
+                   /*,{
                     label: 'Masa Corporal',
                     data: [1, 1],
                     backgroundColor: [
@@ -115,7 +157,7 @@ export class InicioPage {
 
                   ],
                   borderWidth: 1
-              }
+              }*/
                   ]
                },
                options: {
@@ -131,11 +173,82 @@ export class InicioPage {
     
            });
     
+           this.barChartI = new Chart(this.barCanvasImc.nativeElement, {
+            type: 'bar',
+            data: {
+                labels: this.fecha,//["Sesion Anterior", "Sesion Actual"],
+                datasets: [{
+                    label: 'Masa Corporal',
+                    data: this.imc,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)'
+                        
+                    ],
+                    borderWidth: 1
+                }
+               ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                
+            }
+ 
+        });
+
+
+        this.barChartG = new Chart(this.barCanvasGrasa.nativeElement, {
+            type: 'bar',
+            data: {
+                label: '% Grasa',
+                data: this.percentgrasa,
+                backgroundColor: [
+                    
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 1)'
+
+                ],
+                borderWidth: 1
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                
+            }
+ 
+        });
+
+
+
            this.lineChart = new Chart(this.lineCanvas.nativeElement, {
             
                        type: 'line',
                        data: {
-                           labels: ["Sesion Anterior", "Sesion Actual"],
+                           labels: this.fecha,
                            datasets: [
                                {
                                    label: "Peso",
@@ -156,10 +269,10 @@ export class InicioPage {
                                    pointHoverBorderWidth: 2,
                                    pointRadius: 1,
                                    pointHitRadius: 10,
-                                   data: [65, 59, 80],
+                                   data: this.pesoActual,
                                    spanGaps: false,
                                }, {
-                                label: "Masa Corporal",
+                                label: "IMC",
                                 fill: false,
                                 lineTension: 0.1,
                                 backgroundColor: "rgba(54, 162, 235, 0.2)",
@@ -177,11 +290,11 @@ export class InicioPage {
                                 pointHoverBorderWidth: 2,
                                 pointRadius: 1,
                                 pointHitRadius: 10,
-                                data: [75, 69, 90],
+                                data: this.imc,
                                 spanGaps: false,
                             },
                             {
-                              label: "% Muscular",
+                              label: "% Grasa",
                               fill: false,
                               lineTension: 0.1,
                               backgroundColor: "rgba(255, 206, 86, 0.2)",
@@ -199,7 +312,7 @@ export class InicioPage {
                               pointHoverBorderWidth: 2,
                               pointRadius: 1,
                               pointHitRadius: 10,
-                              data: [45, 80, 50],
+                              data: this.percentgrasa,
                               spanGaps: false,
                           }
         
@@ -207,8 +320,10 @@ export class InicioPage {
                        }
             
                    });
-    
+                   //setInterval(function(){ this.barChart.update(); }, 3000);
+                   this.obtenerDatosTabla();
        }
+
 
 
   
