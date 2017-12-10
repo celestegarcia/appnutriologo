@@ -11,6 +11,9 @@
 <ion-content padding style="background:url(assets/img/9fY779LOSPuZ871kraTZ_colors-2560x1600-minimalistic-background-75-4250619615.jpg) no-repeat center;background-size:cover;" id="page6">
   <ion-list>
     <ion-item-divider style="width:100%;height:5px;margin:0px 0px;line-height:250px;background-color:#e8ebef;">Hoy</ion-item-divider>
+    <ion-item-divider *ngIf="vacio">
+      <p>no tiene citas por el momento</p>
+    </ion-item-divider>
     <div *ngFor="let n of citas">
     <ion-item-sliding >
       <ion-item>

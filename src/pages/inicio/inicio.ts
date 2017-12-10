@@ -39,13 +39,7 @@ export class InicioPage {
       ape_materno: localStorage.getItem("ape_materno"),
       nombre: localStorage.getItem("nombre")
     }
-    /*
-        ape_materno:"DIAZ"
-        ape_paterno:"HUDSON"
-        email:"hudson2@gmail.com"
-        nombre:"CARLOS"
-        paciente_id:1
-      */
+    
     this.user=tmpUsr;    // navParams; // <- No funciona esta basura
     console.log(this.user);
 

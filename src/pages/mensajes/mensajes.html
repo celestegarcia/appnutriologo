@@ -11,9 +11,12 @@
 <ion-content padding style="background:url(assets/img/EmuTjLAWT2uh8gbU5sZa_fondo-de-pantalla-plano-de-color-cielo.jpg) no-repeat center;background-size:cover;" id="page4">
   <ion-list>
     <ion-item-divider style="width:100%;height:5px;margin:0px 0px;line-height:250px;background-color:#e8ebef;">Notificaciones</ion-item-divider>
+    <ion-item-divider *ngIf="vacio">
+      <p>no tiene notificaciones por el momento</p>
+    </ion-item-divider>
     <div *ngFor="let n of mensajes">
     <ion-item-sliding>
-      <button ion-item  on-click="verCompleto()">
+      <button ion-item  on-click="verCompleto(n.asunto, n.mensaje)">
         <!--<ion-row>
           <ion-col icon-left col-1 >
             <ion-avatar  clear small>
