@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'page-seguimiento',
@@ -19,17 +20,54 @@ export class SeguimientoPage {
     pesoChart: any;
     muscChart: any;
 
-  constructor(public navCtrl: NavController) {
+    public datosTabla: string;
+    public pesoActual: any = [];
+    public imc: any = [];
+    public percentgrasa: any = [];
+    public fecha: any = [];
+
+  constructor(public navCtrl: NavController, public http : Http ) {
+  }
+
+  obtenerDatosTabla(){
+    let id = localStorage.getItem("paciente_id");
+      this.http.get("http://104.131.121.55/getResumenCitas?paciente_id="+id).subscribe(res=>{
+          let result = res.json().result;
+          this.datosTabla = result;
+          result.forEach(element => {
+            if(element.antropometria != null)  
+            {
+            this.fecha.push(element.fecha );
+              console.log(element.antropometria);    
+              var datos = JSON.parse(element.antropometria);
+              console.log(datos);    
+              this.pesoActual.push(datos.peso_actual );
+              this.imc.push(datos.imc );
+              this.percentgrasa.push(datos.percent_grasa );
+            }
+          });
+          console.log(this.fecha);
+          console.log(this.pesoActual);
+          console.log(this.imc);
+          console.log(this.percentgrasa);
+          this.pesoChart.update();
+          this.masaChart.update();
+          this.muscChart.update();
+          
+          //this.enviarFormulario(res.json());
+          //return this.data;
+      },error=> {
+        console.log("error get resumen citas");  
+      });
   }
 
 
   ionViewDidLoad() {
-
-        this.pesoChart = new Chart(this.pesoCanvas.nativeElement, {
+            this.pesoChart = new Chart(this.pesoCanvas.nativeElement, {
         
                     type: 'line',
                     data: {
-                        labels: ["7 Oct", "14 Oct","21 Oct","28 Oct","4 Nov","11 Nov"],
+                        labels: this.fecha,
                         datasets: [
                             {
                                 label: "Peso",
@@ -50,7 +88,7 @@ export class SeguimientoPage {
                                 pointHoverBorderWidth: 2,
                                 pointRadius: 1,
                                 pointHitRadius: 10,
-                                data: [68, 85, 72,68,80,62],
+                                data: this.pesoActual,
                                 spanGaps: false,
                             }
     
@@ -65,10 +103,10 @@ export class SeguimientoPage {
       
                  type: 'line',
                  data: {
-                     labels: ["7 Oct", "14 Oct","21 Oct","28 Oct","4 Nov","11 Nov"],
+                     labels: this.fecha,
                      datasets: [
                          {
-                             label: "Masa corporal",
+                             label: "IMC",
                              fill: false,
                              lineTension: 0.1,
                              backgroundColor: "rgba(192,192,75,0.4)",
@@ -86,7 +124,7 @@ export class SeguimientoPage {
                              pointHoverBorderWidth: 2,
                              pointRadius: 1,
                              pointHitRadius: 10,
-                             data: [36, 38, 32,28,30,29],
+                             data: this.imc,
                              spanGaps: false,
                          }
   
@@ -99,7 +137,7 @@ export class SeguimientoPage {
               
                          type: 'line',
                          data: {
-                             labels: ["7 Oct", "14 Oct","21 Oct","28 Oct","4 Nov","11 Nov"],
+                             labels: this.fecha,
                              datasets: [
                                  {
                                      label: "% Grasa",
@@ -120,7 +158,7 @@ export class SeguimientoPage {
                                      pointHoverBorderWidth: 2,
                                      pointRadius: 1,
                                      pointHitRadius: 10,
-                                     data: [22, 20, 19,21,16,14],
+                                     data: this.percentgrasa,
                                      spanGaps: false,
                                  }
           
@@ -128,6 +166,8 @@ export class SeguimientoPage {
                          }
               
                      });   
+
+                     this.obtenerDatosTabla();
  
     } //onviewdidload
     

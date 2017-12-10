@@ -67,4 +67,13 @@ export class MensajesPage {
 
     alert.present();
   }
+
+  verCompleto(){
+    let alert = this.alertCtrl.create({
+      title: 'asunto',
+      message: 'Mensaje',
+      
+    });
+  }
+ 
 }

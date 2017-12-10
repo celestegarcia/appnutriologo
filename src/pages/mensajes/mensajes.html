@@ -13,21 +13,27 @@
     <ion-item-divider style="width:100%;height:5px;margin:0px 0px;line-height:250px;background-color:#e8ebef;">Notificaciones</ion-item-divider>
     <div *ngFor="let n of mensajes">
     <ion-item-sliding>
-      <ion-item>
-        <ion-row>
+      <button ion-item  on-click="verCompleto()">
+        <!--<ion-row>
           <ion-col icon-left col-1 >
             <ion-avatar  clear small>
                     <ion-icon name="md-notifications-off"></ion-icon>
                   </ion-avatar>
         </ion-col>
-        <ion-col col-6>
+        <ion-col col-11>
             
            <h2>{{n.asunto}}</h2> 
-            <p>  {{n.mensaje}} </p> 
-            <h3 col-12><ion-icon name="calendar"></ion-icon>  {{n.fecha}}</h3>
+            <br><p>  {{n.mensaje}} </p> 
+            <p><ion-icon name="ion-calendar"></ion-icon>  {{n.fecha}}</p>
         </ion-col>
-        </ion-row>
-      </ion-item>
+        </ion-row>-->
+
+        <ion-icon name="md-mail-open" item-start ></ion-icon>
+        {{n.asunto}}
+        <ion-badge item-end color="cconfirmada">{{n.fecha}}</ion-badge>
+        <br><p>{{n.mensaje}}</p>
+
+      </button>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="borrarSitio(n.aviso_id)">
           <ion-icon name="trash"></ion-icon>
@@ -36,6 +42,14 @@
       </ion-item-options>
     </ion-item-sliding>
     </div>
+    
   </ion-list>
+
+  <ion-item>
+  <ion-icon name="logo-twitter" item-start></ion-icon>
+  Followers
+  <ion-badge item-end>260k</ion-badge>
+  <br><p>prueba dekncdfnvkjvkjfv cjndkjdhfdkjvc dsjhdfs</p>
+</ion-item>
 
 </ion-content>
