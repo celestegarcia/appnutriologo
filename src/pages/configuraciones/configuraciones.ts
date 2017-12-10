@@ -74,9 +74,9 @@ public pwd2:string;
                 foto:this.base64Image,
                 telefono:this.telefono,
                 domicilio:this.direccion,
-                contraseña1:this.pwd1,
-                contraseña2:this.pwd2};
-    if(body.contraseña1==body.contraseña2){
+                pwd1:this.pwd1,
+                pwd2:this.pwd2};
+    if(body.pwd1==body.pwd2){
       let headers: any = new Headers({'Content-Type': 'multipart/form-data'});
       headers = new Headers({ 'Content-Type': 'application/json' });
       //headers.append('Content-Type', 'application/x-www-form-urlencoded');
