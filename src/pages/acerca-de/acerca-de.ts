@@ -11,11 +11,7 @@ export class AcercaDePage {
 
   constructor(public navCtrl: NavController, private callNumber: CallNumber) {
   }
-  goToInicio(params){
-    if (!params) params = {};
-    this.navCtrl.push(TabsControllerPage,{index:0});
-  }
-
+  
   llamar(){
     this.callNumber.callNumber("18001010101", true)
     .then(() => console.log('Launched dialer!'))
