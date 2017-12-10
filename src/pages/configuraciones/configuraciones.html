@@ -39,10 +39,10 @@
       
     </ion-item-divider>
     <ion-item id="configuraciones-textarea7">      
-      <ion-textarea placeholder="Ingrese su contraseña" [ngModelOptions]="{standalone: true}" [(ngModel)]="pwd1"></ion-textarea>
+      <ion-input placeholder="Ingrese su contraseña" type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="pwd1"></ion-input>
     </ion-item>
     <ion-item id="configuraciones-textarea8">
-      <ion-textarea placeholder="Repita contraseña" [ngModelOptions]="{standalone: true}" [(ngModel)]="pwd2"></ion-textarea>
+      <ion-input placeholder="Repita contraseña"  type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="pwd2"></ion-input>
     </ion-item>
   <button  ion-button id="configuraciones-button20"  block (click)="enviarImg()" color="botones">
     Aceptar
