@@ -20,6 +20,7 @@ import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { PreRegistroPage } from '../pages/pre-registro/pre-registro';
 import { MenuPage } from "../pages/menu/menu";
 import { AlbumPage } from "../pages/album/album";
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -28,7 +29,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 import { Camera } from '@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
 import { AuthService } from '../providers/auth-service/auth-service'
-
+import { SMS } from "@ionic-native/sms";
 import { OneSignal } from '@ionic-native/onesignal';
 //Para http
 import { HttpModule } from "@angular/http";
@@ -62,6 +63,7 @@ import  {PostPreReg} from "../services/postprereg";
     NgCalendarModule,
     BrowserModule,
     HttpModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'top'})
   ],
   bootstrap: [IonicApp],
@@ -93,6 +95,7 @@ import  {PostPreReg} from "../services/postprereg";
     Camera,
     CallNumber,
     OneSignal,
+    SMS,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService
   ]
