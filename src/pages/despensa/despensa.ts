@@ -4,13 +4,17 @@ import { EscogerMenuPage } from '../escoger-menu/escoger-menu';
 import { ListaDespensaPage } from '../lista-despensa/lista-despensa';
 import { InicioPage } from '../inicio/inicio';
 
+import { ModalController, AlertController } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
 @Component({
   selector: 'page-despensa',
   templateUrl: 'despensa.html'
 })
 export class DespensaPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,  public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController)
+  {
   }
   goToEscogerMenu(params){
     if (!params) params = {};
@@ -25,4 +29,13 @@ export class DespensaPage {
     if (!params) params = {};
     this.navCtrl.push(InicioPage);
   }
+
+  agregarMenu(){
+    this.navCtrl.push(EscogerMenuPage);
+  }
+
+  ionViewDidLoad() {
+    //Cargar info
+  }
+
 }

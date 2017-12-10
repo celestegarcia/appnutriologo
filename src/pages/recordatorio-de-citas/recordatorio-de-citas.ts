@@ -26,7 +26,7 @@ export class RecordatorioDeCitasPage {
 
   constructor(public navCtrl: NavController,public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController) 
   {
-      this.obtenerCitas();      
+     // this.obtenerCitas();      
   }
 
   obtenerCitas(){
@@ -64,4 +64,9 @@ export class RecordatorioDeCitasPage {
     if (!params) params = {};
     this.navCtrl.push(CitasPage);
   }
+
+  ionViewDidLoad() {
+    this.obtenerCitas();
+  }
+
 }

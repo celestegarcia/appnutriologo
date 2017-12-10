@@ -19,7 +19,7 @@ export class MenuPage{
   constructor(public navCtrl: NavController, public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController ) 
   {
 
-  this.obtenerMenus();
+  //this.obtenerMenus();
   }
   
 
@@ -37,14 +37,18 @@ export class MenuPage{
             this.desayuno.push({menu:element.nombre,alimentos:element.alimentos});
             
         }
-        else if (element.tipo === "Colacion1"){
-          this.colacion1.push({menu:element.nombre,alimentos:element.alimentos});
+        else if (element.tipo === "Colacion"){
+          //
+          if (element.orden ===1){
+            this.colacion1.push({menu:element.nombre,alimentos:element.alimentos});
+          }
+          else {
+          this.colacion2.push({menu:element.nombre,alimentos:element.alimentos});
+          }
+          
         }
         else if (element.tipo === "Comida"){
           this.comida.push({menu:element.nombre,alimentos:element.alimentos});
-        }
-        else if (element.tipo === "Colacion2"){
-          this.colacion2.push({menu:element.nombre,alimentos:element.alimentos});
         }
         else if (element.tipo === "Cena"){
           this.cena.push({menu:element.nombre,alimentos:element.alimentos});
@@ -63,4 +67,9 @@ export class MenuPage{
     alert.present();  
   });
   }
-}
+
+  ionViewDidLoad() {
+    this.obtenerMenus();
+  }
+
+}//class
