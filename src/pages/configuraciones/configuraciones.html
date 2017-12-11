@@ -36,18 +36,27 @@
     <ion-item-divider>
       
         Cambiar Contraseña:
-      
+          
     </ion-item-divider>
-    <ion-item id="configuraciones-textarea7">      
-      <ion-input placeholder="Ingrese su contraseña" type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="pwd1"></ion-input>
+    <form [formGroup]="myForm2" (ngSubmit)="enviarImg()" novalidate> 
+    <ion-item>
+        <ion-input formControlName="pass1" placeholder="Ingrese su contraseña" type="password"  [(ngModel)]="pwd1"></ion-input>
+    </ion-item>     
+      <ion-item *ngIf="myForm2.get('pass1').errors && myForm2.get('pass1').dirty">
+          <p color="danger" ion-text *ngIf="myForm2.get('pass1').hasError('minlength')">*Contraseña minimo 5 caracteres</p>
+          <p color="danger" ion-text *ngIf="myForm2.get('pass1').hasError('maxlength')">*contraseña maximo 10 caracteres</p>        
     </ion-item>
     <ion-item id="configuraciones-textarea8">
-      <ion-input placeholder="Repita contraseña"  type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="pwd2"></ion-input>
+      <ion-input  formControlName="pass2" placeholder="Repita contraseña"  type="password"  [(ngModel)]="pwd2"></ion-input>
     </ion-item>
-  <button  ion-button id="configuraciones-button20"  block (click)="enviarImg()" color="botones">
+        <ion-item *ngIf="myForm2.get('pass2').errors && myForm2.get('pass2').dirty">
+            <p color="danger" ion-text *ngIf="myForm2.get('pass2').hasError('minlength')">*Contraseña minimo 5 caracteres</p>
+            <p color="danger" ion-text *ngIf="myForm2.get('pass2').hasError('maxlength')">*contraseña maximo 10 caracteres</p>
+    </ion-item>
+  <button  ion-button id="configuraciones-button20"  block (click)="enviarImg()" [disabled]="myForm2.invalid" color="botones">
     Aceptar
   </button>
-  
+</form>
   <ion-fab bottom right >
     <button ion-fab color="danger"><ion-icon name="camera"></ion-icon></button>
     <ion-fab-list side="top">

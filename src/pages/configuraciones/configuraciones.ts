@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { Camera } from "@ionic-native/camera";
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -16,10 +17,19 @@ public direccion:string;
 public telefono:string;
 public pwd1:string;
 public pwd2:string;
-  constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http ) 
+myForm2: FormGroup;
+public errMsg:boolean = true;
+  constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http, public fb: FormBuilder ) 
   {
+    this.myForm2 = this.fb.group({
+      pass1: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      pass2: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      
+     } );
+
+
+}
   
-  }
   goToInicio(params){
     if (!params) params = {};
     this.navCtrl.push(TabsControllerPage, {index:0});     

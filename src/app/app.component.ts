@@ -36,7 +36,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       if (localStorage.getItem("paciente_id")){
-      this.handlerNotifications();
+    this.handlerNotifications();
       }
     });
   }

@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 
 import { ModalController, AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @Component({
   selector: 'page-inicio',
@@ -42,7 +43,7 @@ export class InicioPage {
     
     this.user=tmpUsr;    // navParams; // <- No funciona esta basura
     console.log(this.user);
-
+   
        
   }
 
@@ -320,7 +321,6 @@ export class InicioPage {
                    this.obtenerDatosTabla();
        }
 
-
-
+      
   
 }
