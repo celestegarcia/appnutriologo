@@ -22,8 +22,8 @@ public errMsg:boolean = true;
   constructor(public navCtrl: NavController, private camera: Camera, private alertCtrl: AlertController, public http : Http, public fb: FormBuilder ) 
   {
     this.myForm2 = this.fb.group({
-      pass1: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
-      pass2: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      pass1: ['', [ Validators.minLength(5), Validators.maxLength(10)]],
+      pass2: ['', [ Validators.minLength(5), Validators.maxLength(10)]],
       
      } );
 
