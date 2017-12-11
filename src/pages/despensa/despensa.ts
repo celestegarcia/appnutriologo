@@ -13,6 +13,15 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class DespensaPage {
 
+  public menus:any = [];
+  public desayuno: any = [];
+  public colacion1: any = [];
+  public comida: any = [];
+  public colacion2: any = [];
+  public cena: any = [];
+
+  public idmenus:any = [];
+
   constructor(public navCtrl: NavController,  public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController)
   {
   }
@@ -34,8 +43,77 @@ export class DespensaPage {
     this.navCtrl.push(EscogerMenuPage);
   }
 
-  ionViewDidLoad() {
-    //Cargar info
+  obtenerMenus(){
+    let id= localStorage.getItem("paciente_id")
+    //http://104.131.121.55/getMenusActivosPaciente?id=1
+    this.http.get('http://104.131.121.55/getMenusActivosPaciente?id='+id).subscribe(res=>{
+      var resultado=res.json().result;
+      //console.log("getMenusActivosPaciente ");
+      //console.log(resultado);
+      this.menus=resultado;
+      this.menus.forEach(element => {
+        this.idmenus.push(element.menu_id);
+        if (element.tipo === "Desayuno"){
+            this.desayuno.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
+            
+        }
+        else if (element.tipo === "Colacion"){
+          //
+          if (element.orden ==="1"){
+            this.colacion1.push({menu:element.nombre,alimentos:element.alimentos});
+          }
+          else {
+          this.colacion2.push({menu:element.nombre,alimentos:element.alimentos});
+          }
+          
+        }
+        else if (element.tipo === "Comida"){
+          this.comida.push({menu:element.nombre,alimentos:element.alimentos});
+        }
+        else if (element.tipo === "Cena"){
+          this.cena.push({menu:element.nombre,alimentos:element.alimentos});
+        }
+      });
+      console.log(this.menus);
+      //console.log("Comida",this.comida);
+      //console.log("Desayuno",this.desayuno);
+      //console.log("Cena",this.cena);
+      //console.log(this.cena);
+      console.log("ONEGAI->",this.idmenus);
+      let aux = localStorage.getItem("arreglo_despensa");
+
+      if(aux){
+      let arrDesp = JSON.parse(aux);
+      console.log("SHIMAZU->",arrDesp);
+
+      console.log("intersect",this.intersect(this.idmenus,arrDesp));
+      var newArr = this.intersect(this.idmenus,arrDesp);
+        //asignar interseccion para asegurar que solo menus activos se muestren
+      localStorage.setItem("arreglo_despensa",JSON.stringify(newArr));
+
+      }
+
+
+  },error=> {
+    let alert = this.alertCtrl.create({
+      title: 'Error al Obtener Horas',
+      subTitle: 'Hubo un error al obtener menus.',
+      buttons: ['Regresar']
+    });
+    alert.present();  
+  });
   }
+
+  ionViewDidLoad() {
+    this.obtenerMenus();
+  }
+
+  intersect(a, b) {
+    var t;
+    if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+    return a.filter(function (e) {
+        return b.indexOf(e) > -1;
+    });
+}
 
 }

@@ -16,23 +16,14 @@
     Despensa Requerida
   </ion-item-divider>
   <ion-list>
-
+      <div *ngFor="let comida of desayuno">
+          <div *ngFor="let ndesa of comida.alimentos">
     <ion-item>
       <ion-icon name="medical" ></ion-icon>
-      10 huevos
+      {{ndesa.can_recomendada}} {{ndesa.um}} de {{ndesa.descripcion}}
     </ion-item>
-
-    <ion-item>
-      <ion-icon name="medical" ></ion-icon>
-      300 gramos de carne
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="medical" ></ion-icon>
-      8 jitomates
-    </ion-item>
-
-  
+      </div>
+      </div>
 
   </ion-list>
 

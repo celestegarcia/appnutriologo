@@ -8,6 +8,8 @@ import { AlertController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
+import { MenuPage } from "../menu/menu";
+
 @Component({
   selector: 'page-escoger-menu',
   templateUrl: 'escoger-menu.html'
@@ -23,13 +25,18 @@ export class EscogerMenuPage {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http : Http , private modalCtrl: ModalController) 
   {
-    this.obtenerMenus();
+    //this.obtenerMenus();
   }
 
   goToDespensa(params){
     if (!params) params = {};
+
+    
+
     this.navCtrl.push(DespensaPage);
-  }goToEscogerMenu(params){
+  }
+  
+  goToEscogerMenu(params){
     if (!params) params = {};
     this.navCtrl.push(EscogerMenuPage);
   }goToListaDespensa(params){
@@ -50,30 +57,30 @@ export class EscogerMenuPage {
       this.menus=resultado;
       this.menus.forEach(element => {
         if (element.tipo === "Desayuno"){
-            this.desayuno.push({menu:element.nombre,alimentos:element.alimentos});
+            this.desayuno.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
             
         }
         else if (element.tipo === "Colacion"){
           //
-          if (element.orden ===1){
-            this.colacion1.push({menu:element.nombre,alimentos:element.alimentos});
+          if (element.orden ==="1"){
+            this.colacion1.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
           }
           else {
-          this.colacion2.push({menu:element.nombre,alimentos:element.alimentos});
+          this.colacion2.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
           }
           
         }
         else if (element.tipo === "Comida"){
-          this.comida.push({menu:element.nombre,alimentos:element.alimentos});
+          this.comida.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
         }
         else if (element.tipo === "Cena"){
-          this.cena.push({menu:element.nombre,alimentos:element.alimentos});
+          this.cena.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
         }
       });
-      console.log("Comida",this.comida);
-      console.log("Desayuno",this.desayuno);
-      console.log("Cena",this.cena);
-      console.log(this.cena);
+      //console.log("Comida",this.comida);
+      //console.log("Desayuno",this.desayuno);
+      //console.log("Cena",this.cena);
+      //console.log(this.cena);
   },error=> {
     let alert = this.alertCtrl.create({
       title: 'Error al Obtener Horas',
@@ -85,30 +92,70 @@ export class EscogerMenuPage {
   }
 
   ionViewDidLoad() {
-    //this.obtenerMenus();
+    this.obtenerMenus();
   }
 
   showAlert(p) {
+    var listaAlimentos="";
+    p.alimentos.forEach(element => {
+      listaAlimentos+= element.can_recomendada+" "+element.um+" de "+element.descripcion+"\n";
+    });
     let alert = this.alertCtrl.create({
-      title: 'Contenido del menu',
-      subTitle: 'Aqui van los ingredientes!',
+      title: p.menu,
+      subTitle: listaAlimentos,
       buttons: [
         {
           text: 'Ok',
           role: 'cancel',
           handler: () => {
-      
-            console.log('Menu revisado');
+
+            //localStorage.setItem("arreglo_despensa",null);
+            var aux=localStorage.getItem("arreglo_despensa");
+            console.log("MAMADAS",aux);
+            if (aux && aux !="null"){
+              var arrDesp = JSON.parse(aux);
+
+              var newArr = this.union_arrays(arrDesp, [p.menu_id]);
+
+              console.log("union",this.union_arrays(arrDesp, [p.menu_id]));
+              localStorage.setItem("arreglo_despensa",JSON.stringify(newArr));
+            }
+            else{
+            let auxArr = [p.menu_id];
+            localStorage.setItem("arreglo_despensa",JSON.stringify(auxArr));
+            //console.log('Menu revisado',p);
+            }
           }
         },
         {
-          text: 'Ver todo',
+          text: 'Vista Compl.',
           handler: () => {
-            console.log('Menu completo');
+            this.navCtrl.push(MenuPage);
+          }
+        },
+        {
+          text: 'Cerrar',
+          handler: () => {
+            
           }
         }
       ]
     });
     alert.present();
   }
+
+  union_arrays (x, y) {
+    var obj = {};
+    for (var i = x.length-1; i >= 0; -- i)
+       obj[x[i]] = x[i];
+    for (var i = y.length-1; i >= 0; -- i)
+       obj[y[i]] = y[i];
+    var res = []
+    for (var k in obj) {
+      if (obj.hasOwnProperty(k))  // <-- optional
+        res.push(obj[k]);
+    }
+    return res;
+  }
+
 }
