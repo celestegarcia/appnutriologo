@@ -34,6 +34,24 @@
           </ion-slide>
         </div> 
         </ion-slides>
+
+        <ion-slides >
+          <div *ngFor="let ndesa of colacion1">
+        <ion-slide>
+          <ion-item-divider color="light" id="inicio-list-item-divider4">
+            Colación 1 {{ndesa.menu}} 
+            <ion-icon name="arrow-dropright-circle"></ion-icon>
+          </ion-item-divider>
+          <div id="inicio-markdown17" class="show-list-numbers-and-dots" >
+            <div *ngFor="let comida of ndesa.alimentos">
+            <p style="margin-top:0px;color:#ffffff;">
+              {{comida.porciones}} {{comida.um}}  de {{comida.descripcion}}
+            </p>
+            </div>
+          </div>
+        </ion-slide>
+      </div> 
+      </ion-slides>
         
         <!--Comida---------------------- -->
         <ion-slides >
@@ -53,7 +71,25 @@
                 </ion-slide>
             </div>
               </ion-slides>
-      
+
+              <ion-slides >
+                <div *ngFor="let ndesa of colacion2">
+              <ion-slide>
+                <ion-item-divider color="light" id="inicio-list-item-divider4">
+                  Colacion 2: {{ndesa.menu}} 
+                  <ion-icon name="arrow-dropright-circle"></ion-icon>
+                </ion-item-divider>
+                <div id="inicio-markdown17" class="show-list-numbers-and-dots" >
+                  <div *ngFor="let comida of ndesa.alimentos">
+                  <p style="margin-top:0px;color:#ffffff;">
+                    {{comida.porciones}} {{comida.um}}  de {{comida.descripcion}}
+                  </p>
+                  </div>
+                </div>
+              </ion-slide>
+            </div> 
+            </ion-slides>
+      <!-- CENA  -->
               <ion-slides>
                   <div *ngFor="let ncena of cena">
                     <ion-slide>
