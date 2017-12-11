@@ -15,7 +15,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   templateUrl: 'mensajes.html'
 })
 export class MensajesPage {
-  public mensajes: any = ["asd", "asd", "asd"];
+  public mensajes: any = [];
   public vacio:boolean= true;
   constructor(public navCtrl: NavController, public http: Http, private modalCtrl: ModalController, private alertCtrl: AlertController) {
     this.obtenerNotificaciones();
