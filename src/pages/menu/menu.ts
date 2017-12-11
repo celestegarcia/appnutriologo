@@ -39,7 +39,7 @@ export class MenuPage{
         }
         else if (element.tipo === "Colacion"){
           //
-          if (element.orden ===1){
+          if (element.orden ==="1"){
             this.colacion1.push({menu:element.nombre,alimentos:element.alimentos});
           }
           else {
