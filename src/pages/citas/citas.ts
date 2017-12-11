@@ -69,7 +69,7 @@ export class CitasPage {
       this.http.get('http://104.131.121.55/getHorariosByFecha?fecha='+this.cita.fecha).subscribe(res=>{
         var resultado=res.json().result;
         console.log("getHorariosByFecha "+resultado);
-        this.horas=resultado;
+        this.horas=resultado.hms;
     },error=> {
       let alert = this.alertCtrl.create({
         title: 'Error al Obtener Horas',
