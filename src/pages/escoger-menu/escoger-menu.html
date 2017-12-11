@@ -1,101 +1,125 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>
-        Escoger Menu
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content padding style="background:url(assets/img/vIhyOSXXLyowfuITjQMk_diet-calorie-counter-weight-loss-health.jpg) no-repeat center;background-size:cover;" id="page13">
+    <ion-title>
+      Escoger Menu
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background:url(assets/img/vIhyOSXXLyowfuITjQMk_diet-calorie-counter-weight-loss-health.jpg) no-repeat center;background-size:cover;"
+  id="page13">
+
+  <ion-toolbar color="ligth" center >
+    Seleccione el menu de cada comida del 
+    <p>dia    <\p>
+  </ion-toolbar>
+
+  <ion-fab right top>
+    <button ion-fab mini><ion-icon name="md-help"></ion-icon></button>
+  </ion-fab> 
    
-    <ion-card  class="card-oscuro">
-       
-      <ion-toolbar>
-        <ion-segment [(ngModel)]="des" color="secondary">
-          <ion-segment-button value="desayuno1">
-            <ion-icon name="arrow-dropdown-circle"></ion-icon>
-            Desayuno
-          </ion-segment-button>
-          <ion-segment-button value="colacion1">
-            <ion-icon name="arrow-dropdown-circle"></ion-icon>
-            Colación
-          </ion-segment-button>
-        </ion-segment>
-      </ion-toolbar>  
-      <ion-card>
-          <div [ngSwitch]="des">
-              <ion-list radio-group  *ngSwitchCase="'desayuno1'">
-                  <div *ngFor="let ndesa of desayuno">
-                  <ion-item ><ion-label> {{ndesa.menu}} </ion-label> <ion-radio (click)="showAlert(ndesa)" value="hj" checked></ion-radio></ion-item>             
-                  </div>
-                </ion-list>
-                <ion-list  radio-group   *ngSwitchCase="'colacion1'">
-                    <div *ngFor="let ndesa of colacion1">
-                  <ion-item > <ion-label>{{ndesa.menu}} </ion-label> <ion-radio (click)="showAlert(ndesa)" value="hj" checked></ion-radio></ion-item>            
-                    </div>
-                </ion-list>
+  <ion-card class="card-oscuro">
+
+    
+      <ion-segment [(ngModel)]="des" color="secondary">
+        <ion-segment-button value="desayuno1">
+          <ion-icon name="arrow-dropdown-circle"></ion-icon>
+          Desayuno
+        </ion-segment-button>
+        <ion-segment-button value="colacion1">
+          <ion-icon name="arrow-dropdown-circle"></ion-icon>
+          Colación
+        </ion-segment-button>
+      </ion-segment>
+    
+    <ion-card>
+      <div [ngSwitch]="des">
+        <ion-list radio-group *ngSwitchCase="'desayuno1'">
+          <div *ngFor="let ndesa of desayuno">
+            <ion-item>
+              <ion-label> {{ndesa.menu}} </ion-label>
+              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+            </ion-item>
           </div>
-      </ion-card>
+        </ion-list>
+        <ion-list radio-group *ngSwitchCase="'colacion1'">
+          <div *ngFor="let ndesa of colacion1">
+            <ion-item>
+              <ion-label>{{ndesa.menu}} </ion-label>
+              <ion-radio (click)="showAlert(ndesa)"value="{{ndesa.menu}}" checked="false" ></ion-radio>
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
     </ion-card>
-  
-      <ion-card  class="card-oscuro">
-          
-         <ion-toolbar>
-           <ion-segment [(ngModel)]="des2" color="secondary">
-             <ion-segment-button value="comida">
-               <ion-icon name="arrow-dropdown-circle"></ion-icon>
-               Comida
-             </ion-segment-button>
-             <ion-segment-button value="colacion2">
-               <ion-icon name="arrow-dropdown-circle"></ion-icon>
-               Colación
-             </ion-segment-button>
-           </ion-segment>
-         </ion-toolbar>  
-         <ion-card>
-             <div [ngSwitch]="des2">
-                <ion-list radio-group  *ngSwitchCase="'comida'">
-                    <div *ngFor="let ndesa of comida">
-                    <ion-item ><ion-label> {{ndesa.menu}} </ion-label> <ion-radio (click)="showAlert(ndesa)" value="hj" checked></ion-radio></ion-item>             
-                    </div>
-                  </ion-list>
-                  <ion-list  radio-group  *ngSwitchCase="'colacion2'">
-                      <div *ngFor="let ndesa of colacion2">
-                    <ion-item > <ion-label>{{ndesa.menu}} </ion-label> <ion-radio (click)="showAlert(ndesa)" value="hj" checked></ion-radio></ion-item>              
-                      </div>
-                  </ion-list>
-            </div>
-         </ion-card>
-      </ion-card>
-  
-         <ion-card  class="card-oscuro">
-            
-           <ion-toolbar>
-             <ion-segment [(ngModel)]="des3" color="secondary">
-               <ion-segment-button value="cena">
-                 <ion-icon name="arrow-dropdown-circle"></ion-icon>
-                 Cena
-               </ion-segment-button>
-             </ion-segment>
-           </ion-toolbar>  
-           <ion-card>
-               <div [ngSwitch]="des3">
-                      <ion-list radio-group  *ngSwitchCase="'cena'">
-                          <div *ngFor="let ndesa of cena">
-                          <ion-item ><ion-label> {{ndesa.menu}} </ion-label> <ion-radio (click)="showAlert(ndesa)" value="hj" checked></ion-radio></ion-item>             
-                          </div>
-                        </ion-list>
-              </div>
-           </ion-card>
-         </ion-card>
-         <ion-card-content>
-          
-          
-            
-         <button id="escogerMenu-button13" ion-button color="secondary" block on-click="goToDespensa()">
+  </ion-card>
+
+  <ion-card class="card-oscuro">
+
+    
+      <ion-segment [(ngModel)]="des2" color="secondary">
+        <ion-segment-button value="comida">
+          <ion-icon name="arrow-dropdown-circle"></ion-icon>
+          Comida
+        </ion-segment-button>
+        <ion-segment-button value="colacion2">
+          <ion-icon name="arrow-dropdown-circle"></ion-icon>
+          Colación
+        </ion-segment-button>
+      </ion-segment>
+    
+    <ion-card>
+      <div [ngSwitch]="des2">
+        <ion-list radio-group *ngSwitchCase="'comida'">
+          <div *ngFor="let ndesa of comida">
+            <ion-item>
+              <ion-label> {{ndesa.menu}} </ion-label>
+              <ion-radio on-click="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-list>
+        <ion-list radio-group *ngSwitchCase="'colacion2'">
+          <div *ngFor="let ndesa of colacion2">
+            <ion-item>
+              <ion-label>{{ndesa.menu}} </ion-label>
+              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+    </ion-card>
+  </ion-card>
+
+  <ion-card class="card-oscuro">
+
+    
+      <ion-segment [(ngModel)]="des3" color="secondary">
+        <ion-segment-button value="cena">
+          <ion-icon name="arrow-dropdown-circle"></ion-icon>
+          Cena
+        </ion-segment-button>
+      </ion-segment>
+    
+    <ion-card>
+      <div [ngSwitch]="des3">
+        <ion-list radio-group *ngSwitchCase="'cena'">
+          <div *ngFor="let ndesa of cena">
+            <ion-item>
+              <ion-label> {{ndesa.menu}} </ion-label>
+              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+    </ion-card>
+  </ion-card>
+  <ion-card-content>
+
+    <button id="escogerMenu-button13" ion-button color="secondary" block on-click="goToDespensa()">
            Aceptar
          </button>
-         </ion-card-content>
+  </ion-card-content>
+</ion-content>
