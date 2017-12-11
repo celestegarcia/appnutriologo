@@ -40,26 +40,8 @@ export class ListaDespensaPage {
       this.menus=resultado;
       this.menus.forEach(element => {
         this.idmenus.push(element.menu_id);
-        if (element.tipo === "Desayuno"){
+        
             this.desayuno.push({menu:element.nombre,alimentos:element.alimentos,menu_id:element.menu_id});
-            
-        }
-        else if (element.tipo === "Colacion"){
-          //
-          if (element.orden ==="1"){
-            this.colacion1.push({menu:element.nombre,alimentos:element.alimentos});
-          }
-          else {
-          this.colacion2.push({menu:element.nombre,alimentos:element.alimentos});
-          }
-          
-        }
-        else if (element.tipo === "Comida"){
-          this.comida.push({menu:element.nombre,alimentos:element.alimentos});
-        }
-        else if (element.tipo === "Cena"){
-          this.cena.push({menu:element.nombre,alimentos:element.alimentos});
-        }
       });
       //console.log("Comida",this.comida);
       //console.log("Desayuno",this.desayuno);
