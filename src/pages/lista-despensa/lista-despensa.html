@@ -22,8 +22,9 @@
   <ion-list>
   <div *ngFor="let ndesa of despensa">
     <ion-item>
-      <ion-icon name="medical" ></ion-icon>
-      {{ndesa.cantidad}} {{ndesa.um}} de {{ndesa.descripcion}}
+      <!--<ion-icon name="medical" ></ion-icon>-->
+      <ion-label>{{ndesa.cantidad}} {{ndesa.um}} de {{ndesa.descripcion}}</ion-label>
+      <ion-checkbox color="dark" checked="false"></ion-checkbox>
     </ion-item>
       </div>
   </ion-list>
