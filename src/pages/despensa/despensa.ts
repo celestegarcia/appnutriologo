@@ -21,6 +21,7 @@ export class DespensaPage {
   public cena: any = [];
 
   public idmenus:any = [];
+  public dias:any=[];
 
   constructor(public navCtrl: NavController,  public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController)
   {
@@ -106,6 +107,20 @@ export class DespensaPage {
 
   ionViewDidLoad() {
     this.obtenerMenus();
+    this.obtenerDias();
+  }
+
+  obtenerDias(){
+    var diasSel=localStorage.getItem("diasSeleccionados");
+    if(diasSel && diasSel!=="null"){
+      this.dias = JSON.parse(diasSel);
+    }
+    console.log(diasSel);
+
+  }
+
+  borrar(){
+    localStorage.setItem("diasSeleccionados",null);
   }
 
   intersect(a, b) {

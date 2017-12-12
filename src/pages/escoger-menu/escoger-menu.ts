@@ -22,17 +22,49 @@ export class EscogerMenuPage {
   public comida: any = [];
   public colacion2: any = [];
   public cena: any = [];
+  public seleccion:any = [-1,-1,-1,-1,-1];
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http : Http , private modalCtrl: ModalController) 
   {
     //this.obtenerMenus();
   }
 
+  getFecha(){
+    var today:any = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+    
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+    today = mm + '/' + dd + '/' + yyyy;
+    return today;
+  }
+
   goToDespensa(params){
     if (!params) params = {};
-
     
+    //localStorage.setItem("diasSeleccionados",null);
+    var diasSel=localStorage.getItem("diasSeleccionados");
 
+    if (diasSel && diasSel!=="null"){
+      var diasOld = JSON.parse(diasSel);
+      let newId= diasOld[0].id++;
+      let newDia={id:newId,nombre:"Nmenu",menus:this.seleccion};
+      diasOld.push(newDia);
+      localStorage.setItem("diasSeleccionados",JSON.stringify(diasOld));
+    }
+    else{ //AQUI MUEVELE CELESTE PLS
+      var newDia=[{id:0,nombre:"Nmenu",menus:this.seleccion}];
+      localStorage.setItem("diasSeleccionados",JSON.stringify(newDia));
+    }
+    diasSel=localStorage.getItem("diasSeleccionados");
+    console.log(diasSel);
     this.navCtrl.push(DespensaPage);
   }
   
@@ -104,7 +136,7 @@ export class EscogerMenuPage {
       title: p.menu,
       subTitle: listaAlimentos,
       buttons: [
-        {
+        /*{
           text: 'Agregar',
           role: 'cancel',
           handler: () => {
@@ -126,7 +158,7 @@ export class EscogerMenuPage {
             //console.log('Menu revisado',p);
             }
           }
-        },
+        },  */
         {
           text: 'Vista Compl.',
           handler: () => {

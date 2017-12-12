@@ -37,19 +37,19 @@
     
     <ion-card>
       <div [ngSwitch]="des">
-        <ion-list  *ngSwitchCase="'desayuno1'">
+        <ion-list radio-group [(ngModel)]="seleccion[0]" *ngSwitchCase="'desayuno1'">
           <div *ngFor="let ndesa of desayuno">
             <ion-item>
               <ion-label> {{ndesa.menu}} </ion-label>
-              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu_id}}" checked="false"></ion-radio>
             </ion-item>
           </div>
         </ion-list>
-        <ion-list  *ngSwitchCase="'colacion1'">
+        <ion-list radio-group [(ngModel)]="seleccion[1]" *ngSwitchCase="'colacion1'">
           <div *ngFor="let ndesa of colacion1">
             <ion-item>
               <ion-label>{{ndesa.menu}} </ion-label>
-              <ion-radio (click)="showAlert(ndesa)"value="{{ndesa.menu}}" checked="false" ></ion-radio>
+              <ion-radio (click)="showAlert(ndesa)"value="{{ndesa.menu_id}}" checked="false" ></ion-radio>
             </ion-item>
           </div>
         </ion-list>
@@ -73,19 +73,19 @@
     
     <ion-card>
       <div [ngSwitch]="des2">
-        <ion-list *ngSwitchCase="'comida'">
+        <ion-list radio-group [(ngModel)]="seleccion[2]" *ngSwitchCase="'comida'">
           <div *ngFor="let ndesa of comida">
             <ion-item>
               <ion-label> {{ndesa.menu}} </ion-label>
-              <ion-radio on-click="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+              <ion-radio on-click="showAlert(ndesa)" value="{{ndesa.menu_id}}" checked="false"></ion-radio>
             </ion-item>
           </div>
         </ion-list>
-        <ion-list  *ngSwitchCase="'colacion2'">
+        <ion-list radio-group [(ngModel)]="seleccion[3]" *ngSwitchCase="'colacion2'">
           <div *ngFor="let ndesa of colacion2">
             <ion-item>
               <ion-label>{{ndesa.menu}} </ion-label>
-              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu_id}}" checked="false"></ion-radio>
             </ion-item>
           </div>
         </ion-list>
@@ -105,11 +105,11 @@
     
     <ion-card>
       <div [ngSwitch]="des3">
-        <ion-list  *ngSwitchCase="'cena'">
+        <ion-list radio-group [(ngModel)]="seleccion[4]" *ngSwitchCase="'cena'">
           <div *ngFor="let ndesa of cena">
             <ion-item>
               <ion-label> {{ndesa.menu}} </ion-label>
-              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu}}" checked="false"></ion-radio>
+              <ion-radio (click)="showAlert(ndesa)" value="{{ndesa.menu_id}}" checked="false"></ion-radio>
             </ion-item>
           </div>
         </ion-list>

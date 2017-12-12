@@ -13,10 +13,12 @@
       <ion-item-divider color="menu"  id="despensa-list-item50">
           Elejir menú del dia
       </ion-item-divider>
-    <ion-item color="assertive" on-click="goToEscogerMenu()" id="despensa-list-item25">
-      10/DIC/17
+      <div *ngFor="let iter of dias">
+    <ion-item color="assertive" on-click="null" id="despensa-list-item25">
+      {{iter.id}} {{iter.nombre}}
       <ion-icon name="create" item-right></ion-icon>
     </ion-item>
+      </div>
   </ion-list>
   <button id="despensa-button10" ion-button color="botones" block on-click="goToListaDespensa()">
     Generar despensa
@@ -24,6 +26,12 @@
   <ion-fab bottom right>
     <button ion-fab (click)="agregarMenu()" color="fab">
       <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom left>
+    <button ion-fab (click)="borrar()" color="fab">
+      <ion-icon name="md-aperture"></ion-icon>
     </button>
   </ion-fab>
 </ion-content>
