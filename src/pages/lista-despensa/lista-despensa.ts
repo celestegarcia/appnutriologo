@@ -181,18 +181,32 @@ function foo(arr) {
   catAlimentos = this.union_arrays([],catAlimentos); //elimina repetidos
   //auxAlimentos = this.union_arrays([],auxAlimentos); //elimina repetidos
   //auxUM = this.union_arrays([],auxUM); //elimina repetidos
+  var tempdesp=JSON.parse(localStorage.getItem("despensa2"));
+  
   catAlimentos.forEach(element2 => {
     var ts = catAlimentos;
     var indx = ts.indexOf(element2);
+    var a=false;
+    try {
+      a=tempdesp[indx].checked;
+    }
+    catch(err) {
+      console.log("no hay checked");
+    }
+    
+    //if(tempdesp[indx].checked==undefined)a=false;
     this.despensa.push(
       {descripcion:element2,
         um:auxUM[indx],
-        cantidad:auxAlimentos[indx]
+        cantidad:auxAlimentos[indx],
+        checked:a
       });
   });
-
+  localStorage.setItem("despensa2",JSON.stringify (this.despensa));
   }
-
+  clickcbox(){
+    localStorage.setItem("despensa2",JSON.stringify (this.despensa));
+  }
   union_arrays (x, y) {
     var obj = {};
     for (var i = x.length-1; i >= 0; -- i)
