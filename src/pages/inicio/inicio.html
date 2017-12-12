@@ -33,9 +33,9 @@
       Grafica de Barras
     </ion-card-header>
     <ion-card-content>
-
+      <div class="chart-container" style="position: relative; height:40vh; width:70vw" >
         <canvas #lineCanvas></canvas>
-      
+      </div>
     </ion-card-content>
   </ion-card>
 
@@ -45,7 +45,9 @@
       Grafica Lineal
     </ion-card-header>
     <ion-card-content>
+        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
         <canvas #barCanvas></canvas>
+        </div>
         <canvas #barCanvasImc></canvas>
         <canvas #barCanvasGrasa></canvas>
     </ion-card-content>

@@ -5,6 +5,7 @@ import { Chart } from 'chart.js';
 import { ModalController, AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { OneSignal } from '@ionic-native/onesignal';
+import * as moment from 'moment';
 
 @Component({
   selector: 'page-inicio',
@@ -27,7 +28,7 @@ export class InicioPage {
     password:""
   }
   public base64Image: string;
-  public datosTabla: string;
+  public datosTabla: any = [];
   public pesoActual: any = [];
   public imc: any = [];
   public percentgrasa: any = [];
@@ -38,12 +39,12 @@ export class InicioPage {
     let tmpUsr: any ={
       email:localStorage.getItem("email"),
       ape_materno: localStorage.getItem("ape_materno"),
-      nombre: localStorage.getItem("nombre")
+      nombre: localStorage.getItem("nombre")      
     }
     
     this.user=tmpUsr;    // navParams; // <- No funciona esta basura
     console.log(this.user);
-   
+    moment.locale('es');
        
   }
 
@@ -64,11 +65,12 @@ export class InicioPage {
     let id = localStorage.getItem("paciente_id");
       this.http.get("http://104.131.121.55/getResumenCitas?paciente_id="+id).subscribe(res=>{
           let result = res.json().result;
-          this.datosTabla = result;
-          result.forEach(element => {
+          this.datosTabla = result.reverse();
+          this.datosTabla.forEach(element => {
             if(element.antropometria != null)  
             {
-            this.fecha.push(element.fecha );
+                let formatfechav= moment(element.fecha).format('MMM DD')
+                this.fecha.push(formatfechav);
               console.log(element.antropometria);    
               var datos = JSON.parse(element.antropometria);
               console.log(datos);    
@@ -94,8 +96,7 @@ export class InicioPage {
 
   ionViewDidLoad() {
 
-    this.obtenerImg();
-    
+    this.obtenerImg();    
 
            this.barChart = new Chart(this.barCanvas.nativeElement, {
                type: 'bar',
@@ -104,55 +105,16 @@ export class InicioPage {
                    datasets: [{
                        label: 'Peso',
                        data: this.pesoActual,//[12, 19],
-                       backgroundColor: [
-                           
-                           'rgba(54, 162, 235, 0.2)',
-                           'rgba(54, 162, 235, 0.2)',
-                           'rgba(54, 162, 235, 0.2)'
-                           
-                       ],
-                       borderColor: [
-                           
-                           'rgba(54, 162, 235, 1)',
-                           'rgba(54, 162, 235, 1)',
+                       backgroundColor: 
+                          'rgba(54, 162, 235, 0.2)'    
+                       ,
+                       borderColor:                           
                            'rgba(54, 162, 235, 1)'
-                           
-                       ],
+                                                      
+                       ,
                        borderWidth: 1
                    }
-                   /*,{
-                    label: 'Masa Corporal',
-                    data: [1, 1],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(75, 192, 192, 1)'
-                        
-                    ],
-                    borderWidth: 1
-                }, {
-                  label: '% Muscular',
-                  data: [12, 30],
-                  backgroundColor: [
-                      
-                      'rgba(255, 159, 64, 0.2)',
-                      'rgba(255, 159, 64, 0.2)',
-                      'rgba(255, 159, 64, 0.2)',
-                  ],
-                  borderColor: [
-                      
-                      'rgba(255, 159, 64, 1)',
-                      'rgba(255, 159, 64, 1)',
-                      'rgba(255, 159, 64, 1)'
-
-                  ],
-                  borderWidth: 1
-              }*/
+                  
                   ]
                },
                options: {
@@ -175,17 +137,12 @@ export class InicioPage {
                 datasets: [{
                     label: 'Masa Corporal',
                     data: this.imc,
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
+                    backgroundColor: 
                         'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(75, 192, 192, 1)',
+                        ,
+                    borderColor: 
                         'rgba(75, 192, 192, 1)'
-                        
-                    ],
+                        ,
                     borderWidth: 1
                 }
                ]
@@ -210,18 +167,12 @@ export class InicioPage {
                 datasets: [ {
                     label: '% Muscular',
                     data: this.percentgrasa,
-                    backgroundColor: [
+                    backgroundColor: 
                         
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                    ],
-                    borderColor: [
-                        
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(255, 159, 64, 1)'
-  
+                        'rgba(255, 159, 64, 0.2)'
+                    ,
+                    borderColor: [                        
+                        'rgba(255, 159, 64, 1)'  
                     ],
                     borderWidth: 1
                 }
