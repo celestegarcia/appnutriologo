@@ -15,17 +15,6 @@
   <ion-item-divider color="light">
     Despensa Requerida
   </ion-item-divider>
-  <ion-list>
-      <div *ngFor="let comida of desayuno">
-          <div *ngFor="let ndesa of comida.alimentos">
-    <ion-item>
-      <ion-icon name="medical" ></ion-icon>
-      {{ndesa.porciones}} {{ndesa.um}} de {{ndesa.descripcion}}
-    </ion-item>
-      </div>
-      </div>
-
-  </ion-list>
 
   <ion-list>
   <div *ngFor="let ndesa of despensa">

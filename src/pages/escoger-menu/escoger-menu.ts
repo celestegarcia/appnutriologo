@@ -98,14 +98,14 @@ export class EscogerMenuPage {
   showAlert(p) {
     var listaAlimentos="";
     p.alimentos.forEach(element => {
-      listaAlimentos+= element.can_recomendada+" "+element.um+" de "+element.descripcion+"\n";
+      listaAlimentos+= element.can_recomendada+" "+element.um+" de "+element.descripcion+"<br>";
     });
     let alert = this.alertCtrl.create({
       title: p.menu,
       subTitle: listaAlimentos,
       buttons: [
         {
-          text: 'Ok',
+          text: 'Agregar',
           role: 'cancel',
           handler: () => {
 
