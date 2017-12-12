@@ -29,31 +29,72 @@
      
       
       <ion-item-divider color="light" id="inicio-list-item-divider6">
-        Grafica de Avance 
+        Avances de Citas
       </ion-item-divider>
     </ion-list>
     <ion-card-header>
-      Grafica de Barras
+      Grafica Lineal 
+      <p center>desliza</p>
+    </ion-card-header>
+    <ion-card-content class="slides" >
+      <ion-slides effect="coverflow">
+        <ion-slide>
+          <ion-card class="sin">
+            <ion-card-header>
+              Peso
+            </ion-card-header>
+            <ion-card-content>
+              <canvas #pesoCanvas></canvas>
+              
+            </ion-card-content>
+            
+          </ion-card>
+          
+        </ion-slide>
+        
+        <ion-slide>
+          <ion-card>
+            <ion-card-header>
+             IMC
+            </ion-card-header>
+            <ion-card-content>
+              <canvas #masaCanvas></canvas>
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+        <ion-slide>
+           <ion-card>
+        <ion-card-header>
+          % Grasa
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #muscCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+        </ion-slide>
+      </ion-slides>
+      <ion-icon name="ios-more-outline" item-right ></ion-icon>
+    </ion-card-content>
+  
+  </ion-card>
+ 
+
+
+  
+  
+  <ion-card>
+    <ion-card-header>
+      Grafica Barras
     </ion-card-header>
     <ion-card-content>
-      <div class="chart-container" style="position: relative; height:40vh; width:70vw" >
-        <canvas #lineCanvas></canvas>
-      </div>
+       <canvas #barCanvas></canvas>
+       <canvas #barCanvasImc></canvas>
+        <canvas #barCanvasGrasa></canvas>
+
+        
     </ion-card-content>
   </ion-card>
 
   
-  <ion-card>
-    <ion-card-header>
-      Grafica Lineal
-    </ion-card-header>
-    <ion-card-content>
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-        <canvas #barCanvas></canvas>
-        </div>
-        <canvas #barCanvasImc></canvas>
-        <canvas #barCanvasGrasa></canvas>
-    </ion-card-content>
-  </ion-card>
 
 </ion-content>
