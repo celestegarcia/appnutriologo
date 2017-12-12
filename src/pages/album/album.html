@@ -14,13 +14,13 @@
      
   <ion-content padding style="background:url(assets/img/pexels-photo-373019.jpeg) no-repeat center;background-size:cover;" >
     
-        <ion-item color="none" id="configuraciones-list-item35">
+        <ion-item class="card-oscuro"  id="configuraciones-list-item35">
            
-          <ion-thumbnail item-left>
+          <ion-thumbnail  item-left>
               <img [src]="base64Image" *ngIf="base64Image">
             </ion-thumbnail>
             <button ion-button color="secondary" (click)="enviarImg()">Enviar foto</button>
-            <h2>
+            <h2 style="color:#e6e6e6;">
               Foto seleccionada
             </h2>              
           </ion-item>
@@ -29,14 +29,14 @@
               <ion-icon name="camera"></ion-icon>&nbsp;Tomar foto
               </button>
               
-              <ion-content>
+              <ion-card  class="card-oscuro">
                 <ion-slides class="image-slider" loop="true" effect="coverflow">
                   <ion-slide *ngFor="let photo of photos">
-                    <p><ion-icon name="md-images"  ></ion-icon> {{photo.fecha}}</p>
+                    <p style="color:#e6e6e6;"><ion-icon name="md-images"  ></ion-icon> {{photo.fecha}} <ion-icon name="md-rewind" float-right></ion-icon></p>
                     <img src={{photo.foto}} class="thumb-img" imageViewer/>
                   </ion-slide>
                 </ion-slides>
-              </ion-content>
+              </ion-card>
 
       
     </ion-content>
