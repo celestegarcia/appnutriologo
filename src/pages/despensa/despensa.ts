@@ -115,7 +115,7 @@ export class DespensaPage {
     if(diasSel && diasSel!=="null"){
       this.dias = JSON.parse(diasSel);
     }
-    console.log(diasSel);
+    console.log(this.dias);
 
   }
 
@@ -129,6 +129,10 @@ export class DespensaPage {
     return a.filter(function (e) {
         return b.indexOf(e) > -1;
     });
+}
+
+borrarElemento(){
+  
 }
 
 }
