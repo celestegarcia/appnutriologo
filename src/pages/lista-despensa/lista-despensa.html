@@ -15,16 +15,14 @@
   <ion-item-divider color="light">
     Despensa Requerida
   </ion-item-divider>
+
   <ion-list>
-      <div *ngFor="let comida of desayuno">
-          <div *ngFor="let ndesa of comida.alimentos">
+  <div *ngFor="let ndesa of despensa">
     <ion-item>
       <ion-icon name="medical" ></ion-icon>
-      {{ndesa.can_recomendada}} {{ndesa.um}} de {{ndesa.descripcion}}
+      {{ndesa.cantidad}} {{ndesa.um}} de {{ndesa.descripcion}}
     </ion-item>
       </div>
-      </div>
-
   </ion-list>
 
   <button id="listaDespensa-button18" ion-button color="botones" block on-click="goToInicio()">
