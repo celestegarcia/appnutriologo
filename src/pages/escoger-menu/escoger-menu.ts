@@ -4,6 +4,7 @@ import { DespensaPage } from '../despensa/despensa';
 import { ListaDespensaPage } from '../lista-despensa/lista-despensa';
 import { InicioPage } from '../inicio/inicio';
 import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 import { ModalController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -25,7 +26,7 @@ export class EscogerMenuPage {
   public cena: any = [];
   public seleccion: any = [-1, -1, -1, -1, -1];
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, private modalCtrl: ModalController, private toastCtrl: ToastController) {
     //this.obtenerMenus();
     moment.locale('es');
   }
@@ -74,6 +75,28 @@ export class EscogerMenuPage {
 
             if (data.nombre != "") {
               Nmenu = moment(data.nombre).format('DD MMM YY') //data.nombre 
+              if (data.nombre < this.fechaHoy() ) {
+
+                let toast = this.toastCtrl.create({
+                  message: 'Fecha Incorrecta: Seleccione una fecha futura para registrar el menu.',
+                  duration: 4000,
+                  position: 'bottom'
+                });
+              
+                toast.onDidDismiss(() => {
+                  console.log('Dismissed toast');
+                });
+              
+                toast.present();
+
+                /*let alert = this.alertCtrl.create({
+                  title: 'Fecha Incorrecta',
+                  subTitle: 'Seleccione una fecha futura para registrar el menu.',
+                  buttons: ['Regresar']
+                });
+                alert.present();*/
+                return ;
+              }else{
               console.log(Nmenu);
 
               //localStorage.setItem("diasSeleccionados",null);
@@ -94,6 +117,7 @@ export class EscogerMenuPage {
               diasSel = localStorage.getItem("diasSeleccionados");
               console.log(diasSel);
               this.navCtrl.push(DespensaPage);
+            }
 
             } else {
 
@@ -160,6 +184,25 @@ export class EscogerMenuPage {
       });
       alert.present();
     });
+  }
+
+  //obtener dia de hoy para validar
+  fechaHoy(){
+    var today = new Date();
+    var dd:any = today.getDate();
+    var mm:any = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    
+    if(dd<10) {
+        dd = '0'+dd;
+    } 
+    
+    if(mm<10) {
+        mm = '0'+mm;
+    } 
+    
+    var hoy = yyyy  + '-' + mm  + '-' + dd;
+    return hoy;
   }
 
   ionViewDidLoad() {
