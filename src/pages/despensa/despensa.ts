@@ -25,6 +25,7 @@ export class DespensaPage {
 
   constructor(public navCtrl: NavController,  public http : Http , private modalCtrl: ModalController, private alertCtrl: AlertController)
   {
+    //localStorage.setItem("diasSeleccionados",null); 
   }
   goToEscogerMenu(params){
     if (!params) params = {};
@@ -52,6 +53,23 @@ export class DespensaPage {
       //console.log("getMenusActivosPaciente ");
       //console.log(resultado);
       this.menus=resultado;
+      
+      //comprobar resumen:id
+      this.menus[0].resumen_id=0;
+      console.log("resumen_id",this.menus[0].resumen_id);
+      var resId = localStorage.getItem("resumen_id");
+      if(resId && resId!=="null"){
+        let resVal = JSON.parse(resId);
+
+        if(resVal !== this.menus[0].resumen_id){
+          console.log("elimina "+resVal+" - "+this.menus[0].resumen_id);
+          localStorage.setItem("resumen_id",this.menus[0].resumen_id);
+          this.borrar();
+        }
+
+      }
+      else{localStorage.setItem("resumen_id",this.menus[0].resumen_id);}
+
       this.menus.forEach(element => {
         this.idmenus.push(element.menu_id);
         if (element.tipo === "Desayuno"){
@@ -121,6 +139,13 @@ export class DespensaPage {
 
   borrar(){
     localStorage.setItem("diasSeleccionados",null);
+    let alert = this.alertCtrl.create({
+      title: 'Menús Cambiados',
+      subTitle: 'Sus menus asignados cambiaron <br>Seleccione nuevos menus para despensa.',
+      buttons: ['Regresar']
+    });
+    alert.present(); 
+
   }
 
   intersect(a, b) {
@@ -131,7 +156,36 @@ export class DespensaPage {
     });
 }
 
-borrarElemento(){
+borrarElemento(idElim){
+
+  var i=0,res=-1;
+  this.dias.forEach(element => {
+    if(res>-1){
+      //hacer nada
+    }
+    else{
+    if(idElim===element.id){
+      res=i;
+    }
+    i++;
+  }
+  });
+  
+
+
+  console.log(idElim);
+  console.log("se va ->",this.dias[res]);
+
+
+
+  if(res>-1){
+    console.log("befou-> ",this.dias);
+    this.dias.splice(res, 1);
+    
+    localStorage.setItem("diasSeleccionados",JSON.stringify(this.dias));
+    if(this.dias.length===0){localStorage.setItem("diasSeleccionados",null);}
+    console.log("->",this.dias);
+  }
   
 }
 
