@@ -115,7 +115,7 @@ export class DespensaPage {
 
   },error=> {
     let alert = this.alertCtrl.create({
-      title: 'Error al Obtener Horas',
+      title: 'Error al Obtener Menus',
       subTitle: 'Hubo un error al obtener menus.',
       buttons: ['Regresar']
     });

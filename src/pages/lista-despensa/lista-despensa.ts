@@ -123,8 +123,8 @@ function foo(arr) {
 
   },error=> {
     let alert = this.alertCtrl.create({
-      title: 'Error al Obtener Horas',
-      subTitle: 'Hubo un error al obtener menus.',
+      title: 'Error al Obtener Menus',
+      subTitle: 'No tienes menus asignados o no tiene conexion a internet',
       buttons: ['Regresar']
     });
     alert.present();  
